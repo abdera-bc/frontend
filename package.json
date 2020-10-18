@@ -1,10 +1,11 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "Abdera Biberach",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "deploy": "./deploy.sh",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
