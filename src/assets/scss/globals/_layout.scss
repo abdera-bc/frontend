@@ -1,0 +1,29 @@
+// layout.scsss
+
+.base-grid {
+  display: grid;
+  grid-template-columns: $outerArea 65px auto 50% $outerArea;
+  grid-template-rows: auto;
+}
+
+.full-width {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.content-width {
+  grid-column-start: 2;
+  grid-column-end: 5;
+}
+
+.half {
+  &--left {
+    grid-column-start: 2;
+    grid-column-end: 4;
+  }
+
+  &--right {
+    grid-column-start: 4;
+    grid-column-end: 5;
+  }
+}

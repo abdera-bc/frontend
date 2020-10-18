@@ -1,0 +1,61 @@
+// Fontface
+// Work Sans (Google Font)
+@font-face {
+  font-family: 'WorkSansRegular';
+  src: url('~@/assets/fonts/work-sans/WorkSans-Regular.ttf') format('truetype'); 
+}
+
+@font-face {
+  font-family: 'WorkSansSemiBold';
+  src: url('~@/assets/fonts/work-sans/WorkSans-SemiBold.ttf') format('truetype'); 
+}
+
+@mixin font($selector) {
+  @if $selector == text {
+    font-family: 'WorkSansRegular', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25em;
+    text-transform: none;
+  }
+
+  @if $selector == text-bold {
+    font-family: 'WorkSansSemiBold', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25em;
+    text-transform: none;
+  }
+
+  @if $selector == subline {
+    font-family: 'WorkSansRegular', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1em;
+    text-transform: uppercase;
+  }
+
+  @if $selector == caption {
+    font-family: 'WorkSansRegular', Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25rem;
+    text-transform: none;
+  }
+
+  @if $selector == headline {
+    font-family: 'WorkSansSemiBold', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.25em;
+    text-transform: none;
+  }
+
+  @if $selector == title {
+    font-family: 'WorkSansSemiBold', Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.25em;
+    text-transform: none;
+  }
+}

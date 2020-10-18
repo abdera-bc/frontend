@@ -2,26 +2,61 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 
+const Programm = () => Promise.resolve(import('../views/Program.vue'));
+const Page = () => Promise.resolve(import('../views/Page.vue'));
+const Event = () => Promise.resolve(import('../views/Event.vue'));
+const NotFound = () => Promise.resolve(import('../views/NotFound.vue'));
+
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
-    name: 'Home',
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+    path: '/programm',
+    name: 'Programm',
+    component: Programm
+  },
+  {
+    path: '/ueber',
+    name: 'Über',
+    component: Page
+  },
+  {
+    path: '/information',
+    name: 'Infos',
+    component: Page
+  },
+  {
+    path: '/helfen',
+    name: 'Helfen',
+    component: Page
+  },
+  {
+    path: '/event/:id',
+    component: Event
+  },
+  {
+    path: '/404', 
+    component: NotFound
+  },
+  {
+    path: '*', redirect: '/404' 
+  },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }   
 })
 
 export default router

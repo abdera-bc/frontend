@@ -1,32 +1,63 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Navigation>
+      <ul>
+        <li v-for="route in routes" :key="route.path">
+          <router-link :to="route.path">{{ route.name }}</router-link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <router-link to="/booker">&rarr; Mieten</router-link>
+        </li>
+      </ul>
+    </Navigation>
+    <main>
+      <Loader v-show="isLoading()" />
+      <router-view v-show="!isLoading()" />
+    </main>
+    <Footer v-show="!isLoading()" />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navigation from './components/Navigation'
+import Loader from './components/Loader'
+import Footer from './components/Footer'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  components: {
+    Navigation,
+    Loader,
+    Footer
+  },
+  data () {
+    return {
+      pages: null,
+      routes: []
     }
+  },
+  methods: {
+    isLoading: function () {
+      return this.$store.state.loading;
+    }
+  },
+  created() {
+    this.$router.options.routes.forEach(route => {
+      if (route.name) { 
+        this.routes.push({
+            name: route.name,
+            path: route.path
+        });
+      } 
+    })
   }
+}
+</script>
+
+<style lang="scss">
+main {
+  min-height: calc(100vh - 50px);
+  overflow-x: hidden;
 }
 </style>

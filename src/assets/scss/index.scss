@@ -1,0 +1,140 @@
+@import "./globals/fonts";
+@import "./globals/layout";
+
+// General
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+a {
+  color: $black;
+  text-decoration: none;
+
+  &.text--subline {
+    text-decoration: underline;
+  }
+}
+
+#app {
+  @include font(text);
+  box-sizing: border-box;
+}
+
+// Font classes
+.text {
+  &--normal {
+    @include font(text);
+  }
+
+  &--bold {
+    @include font(text-bold);
+  }
+
+  &--subline {
+    @include font(subline);
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &--caption {
+    @include font(caption);
+  }
+
+  &--headline {
+    @include font(headline);
+  }
+  
+  &--title {
+    @include font(title);
+  }
+}
+
+// Modifiers
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
+}
+
+// Transitions
+
+.transition {
+  transition: all .15s ease-out;
+}
+
+.frame {
+  &-bl {
+    position: relative;
+    background-color: $white;
+    border: 2px solid $black;
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 2px;
+      left: -6px;
+      height: 100%;
+      width: 100%;
+      border: 2px solid $black;
+      z-index: -1;
+    }
+  }
+
+  &-br {
+    position: relative;
+    background-color: $white;
+    border: 2px solid $black;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 2px;
+      left: 2px;
+      height: 100%;
+      width: 100%;
+      border: 2px solid $black;
+      z-index: -1;
+    }
+  }
+}
+
+// Animations
+.rotating {
+  animation: rotating .8s linear infinite;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@import "./renderedContent";
