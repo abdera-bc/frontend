@@ -17,7 +17,7 @@ export default new Vuex.Store({
     getEvent: (state) => (modifier) => {
       if (state.events) {
         let target;
-        state.events.map((event) => {
+        state.events.content.map((event) => {
           if (event.id == modifier ) {
             target = event;
           }

@@ -44,7 +44,6 @@ export default {
     flex-direction: row;
     justify-content: flex-start;
     padding: 20px 0;
-    border: 2px solid $black;
   }
 }
 </style>
