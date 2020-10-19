@@ -4,10 +4,12 @@
         <ProgramItemSeparator class="lazy-program" :key="event.id + '-' + event.date.month" v-if="event.date.change" :month="event.date.month" :year="event.date.year" />
         <ProgramItem class="lazy-program" :key="event.id" :event="event" />
       </template>
-    <div v-show="!this.$store.state.isLoading" class="program__container lazy-program base-grid">
+    <div 
+      v-if="this.$store.state.content && this.$store.state.events.count < this.$store.state.events.total" 
+      class="program__container lazy-program base-grid"
+    >
       <div class="program__container__right">
         <Tag 
-          v-if="this.$store.state.events.count < this.$store.state.events.total" 
           @click.native="fetchEvents()" 
           content="Mehr laden" 
           button 

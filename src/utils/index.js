@@ -30,12 +30,12 @@ const utils = {
     filter += params.meta_key ? '&meta_key=' + params.meta_key : '';
     filter += params.order ? '&order=' + params.order : '';
 
+    
     let parameter = (pages || fields || filter) ? '?' + pages + fields + filter : '';
-
-    // Query
     const query = config.API_LOCATION + endpoint + parameter;
 
     const response = await fetch(query);
+
     if (response.status == 200) {
       if (endpoint === 'events') {
         store.commit('setTotalEvents', response.headers.get('X-WP-Total'));

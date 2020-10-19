@@ -49,14 +49,14 @@
           <p class="frame-bl"><strong>... gibts bei uns nur hinter der Theke (und Kasse).</strong><br />
           Wir suchen immer fleißige Freiwillige, die mit uns den Laden schmeißen!</p>
         </div>
-      </div>
-      <div class="home__help__bottom content-width">
+        <div class="home__help__bottom content-width">
         <Tag 
             class="home__help__link" 
             content="Helfer werden" 
             url="/helfen" 
             dark
           />
+      </div>
       </div>
     </div>
 
@@ -181,11 +181,10 @@ export default {
       }
 
       &__wrapper {
-        margin-top: -50%;
         h1 {
           display: inline-block;
           padding: 12px 20px;
-          transform: translateY(-280px);
+          transform: translateY(-450px);
 
           &::before {
             background-color: $white;
@@ -194,6 +193,7 @@ export default {
       }
 
       &__content {
+        margin-top: -150px;
         padding: 0 30px;
 
         p {
