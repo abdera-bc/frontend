@@ -22,7 +22,7 @@
       </div>
     </div>
     <transition name="toggleMenuBackButton">
-      <div v-if="this.$route.name === 'Event'" class="base-grid navigation__optional--grid">
+      <div v-if="this.$route.path.includes('/event/')" class="base-grid navigation__optional--grid">
         <div v-on:click="goBack()" class="navigation__optional content-width">
           &larr; Übersicht
         </div>
