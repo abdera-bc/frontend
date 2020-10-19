@@ -3,6 +3,9 @@ set -e
 # build
 npm run build
 
+# copy netlify configurations file
+cp netlify.toml dist/netlify.toml
+
 # navigate into the build output directory
 cd dist
 

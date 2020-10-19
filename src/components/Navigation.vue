@@ -14,7 +14,7 @@
         </div>
         <transition name="toggleMobileMenu">
           <nav v-if="showMenu" class="navigation__main__container base-grid">
-            <div class="navigation__main__container--distributor content-width">
+            <div @click="showMenu = false" class="navigation__main__container--distributor content-width">
               <slot class="content-width"></slot>
             </div>
           </nav>
