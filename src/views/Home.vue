@@ -87,7 +87,7 @@ export default {
     getContent: function (slug) {
       this.$store.commit('isLoading', true);
       utils.get.content('pages?slug=' + slug)
-      .then(res => this.page = utils.get.home(res[0]))
+      .then(res => this.page = utils.map.home(res[0]))
       .then(this.$store.commit('isLoading', false))
     }
   },

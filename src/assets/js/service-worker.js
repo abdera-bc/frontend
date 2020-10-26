@@ -3,9 +3,7 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('mysite-data').then(function(cache) {
       return cache.addAll(
-        [
-          '/index.html'
-        ]
+        ['/index.html']
       );
     })
   );

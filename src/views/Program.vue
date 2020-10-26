@@ -49,7 +49,7 @@ export default {
           order: 'asc'
         }
       )
-      .then(res => res ? this.$store.commit('setEvents', utils.get.events(res)) : '')
+      .then(res => res ? this.$store.commit('setEvents', utils.map.events(res)) : '')
       .then(this.$store.commit('isLoading', false))
       .catch(err => console.error('Abdera is sorry:', err));
     }

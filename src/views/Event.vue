@@ -66,7 +66,7 @@ export default {
     getContent: async function (id) {
       this.$store.commit('isLoading', true);
       await utils.get.content('events?include[]=' + id)
-        .then(res => this.event = utils.get.events(res)[0])
+        .then(res => this.event = utils.map.events(res)[0])
         .then(this.$store.commit('isLoading', false))
         .catch(err => utils.error.route(err));
     },

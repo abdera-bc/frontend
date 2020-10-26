@@ -3,7 +3,7 @@
     <div class="blackboard__wrapper content-width ">
       <div class="blackboard__title text--subline">News</div>
       <ul class="frame-bl">
-        <li v-for="entry in entrys.slice(0)" :key="entry.home_blackboard_title">
+        <li v-for="entry in entrys.slice(0, 1)" :key="entry.home_blackboard_title">
           <div>
             <h1>{{ entry.home_blackboard_title }}</h1>
             <div class="rendered-content not-indented" v-html="entry.home_blackboard_content"></div>

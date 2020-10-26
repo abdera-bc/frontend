@@ -12,6 +12,8 @@ const utils = {
     let fields = '';
     let filter = '';
 
+    const api = endpoint.includes('options') ? 'acf/v3/' : 'wp/v2/';
+
     if (params.pages) {
       params.pages.map(id => {
         pages += '&_include[]=' + id;
@@ -30,9 +32,8 @@ const utils = {
     filter += params.meta_key ? '&meta_key=' + params.meta_key : '';
     filter += params.order ? '&order=' + params.order : '';
 
-    
     let parameter = (pages || fields || filter) ? '?' + pages + fields + filter : '';
-    const query = config.API_LOCATION + endpoint + parameter;
+    const query = config.API_LOCATION + api + endpoint + parameter;
 
     const response = await fetch(query);
 
@@ -41,12 +42,13 @@ const utils = {
         store.commit('setTotalEvents', response.headers.get('X-WP-Total'));
       }
       const json = await response.json();
+      
       if (json.length) {
         return json;
       }
     }
   },
-  contentMapper: (data) => {
+  eventMapper: (data) => {
     if (data) {
       return data.map(event => {
         return { 
@@ -55,33 +57,45 @@ const utils = {
           content: _.get(event, 'content.rendered'),
           types: event.cats ? event.cats.map((cat) => [cat.name, cat.slug, cat.cat_ID]) : '',
           tags: event.custom_tags ? event.custom_tags.map((tag) => tag.name) : '',
-          date: date(_.get(event, 'event_date')),
-          entry: _.get(event, 'event_entry'),
-          start: _.get(event, 'event_start'),
-          end: _.get(event, 'event_end'),
-          location: _.get(event, 'event_common_information.event_location'),
-          organizer: _.get(event, 'event_common_information.event_organizer'),
-          presenter: _.get(event, 'event_common_information.event_presenter'),
-          spotify: _.get(event, 'event_common_information.event_spotify'),
-          website: _.get(event, 'event_common_information.event_website'),
-          image: _.get(event, 'event_common_information.event_image'),
-          vvk: _.get(event, 'event_sale_information.event_pre_sale'),
-          ak: _.get(event, 'event_sale_information.event_box_office'),
-          tickets: _.get(event, 'event_sale_information.event_ticket_link'),
-          quick: _.get(event, 'event_quick_information'),
+          date: date(_.get(event, 'acf.event_date')),
+          entry: _.get(event, 'acf.event_entry'),
+          start: _.get(event, 'acf.event_start'),
+          end: _.get(event, 'acf.event_end'),
+          location: _.get(event, 'acf.event_common_information.event_location'),
+          organizer: _.get(event, 'acf.event_common_information.event_organizer'),
+          presenter: _.get(event, 'acf.event_common_information.event_presenter'),
+          spotify: _.get(event, 'acf.event_common_information.event_spotify'),
+          website: _.get(event, 'acf.event_common_information.event_website'),
+          image: _.get(event, 'acf.event_common_information.event_image'),
+          vvk: _.get(event, 'acf.event_sale_information.event_pre_sale'),
+          ak: _.get(event, 'acf.event_sale_information.event_box_office'),
+          tickets: _.get(event, 'acf.event_sale_information.event_ticket_link'),
+          quick: _.get(event, 'acf.event_quick_information'),
         }
       });
+    }
+  },
+  pageMapper: (data) => {
+    if (data) {
+      return { 
+        id: data.id || '',
+        title: _.get(data, 'acf.page_title'),
+        subtitle: _.get(data, 'acf.page_subtitle'),
+        image: _.get(data, 'acf.page_image'),
+        wp_title: _.get(data, 'title.rendered'),
+        content: _.get(data, 'content.rendered')
+      }
     }
   },
   homeMapper: (data) => {
     if (data) {
       return { 
         id: data.id || '',
-        title: _.get(data, 'page_title'),
-        subtitle: _.get(data, 'page_subtitle'),
-        image: _.get(data, 'page_image'),
-        content: _.get(data, 'content.rendered'),
-        blackboard: _.get(data, 'home_blackboard')
+        title: _.get(data, 'acf.page_title'),
+        subtitle: _.get(data, 'acf.page_subtitle'),
+        image: _.get(data, 'acf.page_image'),
+        blackboard: _.get(data, 'acf.home_blackboard'),
+        content: _.get(data, 'content.rendered')
       }
     }
   },
@@ -126,9 +140,11 @@ function date(string) {
 export default {
   get: {
     content: utils.getContent,
-    events: utils.contentMapper,
+  },
+  map: {
+    events: utils.eventMapper,
+    page: utils.pageMapper,
     home: utils.homeMapper
-    
   },
   error: {
     route: utils.errorRouter
