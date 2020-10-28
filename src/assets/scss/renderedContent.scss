@@ -173,8 +173,8 @@ strong {
 
   ul {
     position: relative;
-    padding: 0 0 20px var(--contentSpacingWidth);
-    margin: 30px;
+    padding: 0 0 20px 40px;
+    margin: var(--contentSpacingWidth) var(--textSpacingWidth);
     border: 2px solid var(--black);
     background-color: var(--white);
 

@@ -56,6 +56,13 @@
       grid-column-end: 6;
     }
   }
+
+  &-right-border {
+    @include breakpoint('medium') {
+      grid-column-start: 4;
+      grid-column-end: 7;
+    }
+  }
 }
 
 .large {

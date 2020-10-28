@@ -14,9 +14,11 @@
           :class="{'rotate-90 navigation__main__hamburger--open': showMenu}">
         </div>
         <transition name="toggleMobileMenu">
-          <nav v-if="showMenu" class="navigation__main__container base-grid">
-            <div @click="showMenu = false" class="navigation__main__container--distributor content">
-              <slot class="content"></slot>
+          <nav v-if="showMenu" @click="showMenu = false" class="navigation__main__container--grid base-grid">
+            <div class="navigation__main__container full medium-right-border base-grid">
+              <div class="navigation__main__container--distributor content medium-full">
+                <slot class="content"></slot>
+              </div>
             </div>
           </nav>
         </transition>
@@ -47,6 +49,11 @@ export default {
     goBack: function () {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/programm');
     }
+  },
+  mounted() {
+    document.getElementById('app').addEventListener('click', function () {
+      this.showMenu = !this.showMenu;
+    });
   },
   watch: {
     $route () {
@@ -135,20 +142,37 @@ export default {
       max-width: 1280px;
     }
 
-    &__container {
+    &__container--grid {
       position: absolute;
       width: 100%;
       height: calc(100vh - 50px);
       height: calc(var(--vh, 1vh) * 100 - 50px);
       top: $mainMenuHeight;
       left: 0;
+
+      @include breakpoint('medium') {
+        position: absolute;
+        max-width: 1280px;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &__container {
+      height: 100%;
       background-color: var(--black);
 
       &--distributor {
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 20px 0;
+
+        @include breakpoint('medium') {
+          padding: 20px;
+        }
       }
 
       ul {
@@ -242,6 +266,10 @@ export default {
 .toggleMobileMenu-leave-to {
   transform: translateY(10%);
   opacity: 0.5;
+
+  @include breakpoint('medium') {
+    transform: translateY(10%) translateX(-50%);
+  }
 }
 
 .toggleMenuBackButton-enter-active, 
