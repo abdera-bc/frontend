@@ -87,6 +87,14 @@ a {
   transition: all .15s ease-out;
 }
 
+.only-desktop {
+  display: none;
+  
+  @include breakpoint(medium) {
+    display: block;
+  }
+}
+
 .frame {
   &-bl {
     position: relative;

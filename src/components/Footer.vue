@@ -1,28 +1,40 @@
 <template>
   <div class="footer" :class="{'footer--dark' : dark}">
     <div class="footer--grid base-grid">
-      <div class="footer__container content">
-        <div class="footer__container__column">
-          <p class="text--caption">
-            <strong> © {{ currentYear }} Lilienthal e.V.<br />
-            Kulturhalle Abdera <br /></strong>
-            Breslaustraße 13 <br />
-            88400 Biberach/Riß <br />
-          </p>
-          <p class="text--caption">
-            +49 (0) 7351 / 16 93 54 <br />
-            <a class="footer__container__mail" href="mailto:info@abdera-bc.de">info@abdera-bc.de</a>
-          </p>
-        </div>
-        <div class="footer__container__column">
+      <div class="footer__container content medium-left">
+        <div class="footer__container__column footer__container__column__left">
           <div class="footer__socialmedia">
-            <SocialLink type="facebook" light small />
-            <SocialLink type="instagram" light small />
-            <SocialLink type="youtube" light small />
+            <SocialLink type="facebook" light />
+            <SocialLink type="instagram" light />
+            <SocialLink type="youtube" light />
           </div>
+          <div class="footer__contact">
+            <p class="text--caption footer__contact__item">
+              <strong> © {{ currentYear }} Lilienthal e.V.<br />
+              Kulturhalle Abdera <br /></strong>
+              Breslaustraße 13 <br />
+              88400 Biberach/Riß <br /><br />
+              +49 (0) 7351 / 16 93 54 <br />
+              <a class="footer__container__mail" href="mailto:info@abdera-bc.de">info@abdera-bc.de</a>
+            </p>
+            <div class="footer__legal footer__contact__item">
+              <Tag content="Impressum" :url="this.config.BASE_URL + 'impressum'" dark />
+              <Tag content="Datenschutz" :url="this.config.BASE_URL + 'datenschutz'" dark />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__container content medium-right">
+        <div class="footer__container__column footer__container__column__right">
           <div class="footer__menu">
-            <Tag content="Impressum" :url="this.config.BASE_URL + 'impressum'" dark />
-            <Tag content="Datenschutz" :url="this.config.BASE_URL + 'datenschutz'" dark />
+            <div class="only-desktop">
+              <slot></slot>
+            </div>
+            <div class="footer__copyright footer__menu__item">
+              Design und Implementierung<br />
+              <a href="https://katrinmentz.com/" traget="_blank" rel="noreferrer">Katrin Mentz</a> & 
+              <a href="https://moritzgut.de/" traget="_blank" rel="noreferrer">Moritz Gut</a>
+            </div>
           </div>
         </div>
       </div>
@@ -67,14 +79,21 @@ export default {
   &__container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     max-width: 1280px;
+    padding: var(--contentSpacingWidth);
 
     &__column {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      flex-direction: row;
       flex-grow: 1;
+
+      &__left {
+        justify-content: space-between;
+      }
+
+      &__right {
+        justify-content: flex-end;
+      }
       
       p, strong {
         font-size: 12px;
@@ -95,29 +114,93 @@ export default {
   }
 
   &__socialmedia {
-    margin: 12px 0;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
 
     *:not(:last-child) {
       margin-right: 15px;
     }
   }
 
-  &__menu {
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+    &__item {
+      margin-top: var(--containerSpacingHeight);
+
+      &:first-child {
+        margin-top: 0px;
+      }
+    }
+  }
+
+  &__legal {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     bottom: 0px;
-    margin: 12px 0;
 
     * {
-      align-self: flex-end;
+      align-self: flex-start;
       margin: 0;
 
       &:not(:last-child) {
         margin-bottom: 5px;
+      }
+    }
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+        display: inline-block;
+        padding-bottom: 15px;
+        transition: all .15s ease-in;
+        text-align: right;
+        
+        a {
+          display: inline-block;
+          @include font(headline);
+          text-transform: uppercase;
+          font-size: 14px;
+          letter-spacing: 0.2rem;
+          color: var(--white);
+        }
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    &__item {
+      color: var(--white);
+      text-align: center;
+      
+      @include breakpoint ('medium') {
+        text-align: right;
+      }
+
+      > a {
+        color: var(--white);
+        text-decoration: underline;
       }
     }
   }
