@@ -20,7 +20,18 @@
         <router-view v-show="!isLoading()" />
       </main>
 
-      <Footer v-show="!isLoading()" dark />
+      <Footer v-show="!isLoading()" dark>
+        <ul v-if="bookRoutes.length">
+          <li  v-for="route in bookRoutes" :key="route.path">
+            <router-link :to="route.path">{{ route.name }}</router-link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <router-link to="/">&rarr; Besucher</router-link>
+          </li>
+        </ul>
+      </Footer>
     </template>
 
     <template v-else>
@@ -42,7 +53,18 @@
         <router-view v-show="!isLoading()" />
       </main>
 
-      <Footer v-show="!isLoading()" />
+      <Footer v-show="!isLoading()">
+        <ul>
+          <li v-for="route in routes" :key="route.path">
+            <router-link :to="route.path">{{ route.name }}</router-link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <router-link to="/mieten">&rarr; Veranstalter</router-link>
+          </li>
+        </ul>
+      </Footer>
     </template>
   </div>
 </template>
