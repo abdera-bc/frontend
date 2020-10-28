@@ -89,13 +89,13 @@ export default {
 
   &--light {
     .st0 {
-      fill: $white
+      fill: var(--white)
     }
   }
 
   &--dark {
     .st0 {
-      fill: $black
+      fill: var(--black)
     }
   }
 }

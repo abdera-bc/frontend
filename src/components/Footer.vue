@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" :class="{'footer--dark' : dark}">
     <div class="footer--grid base-grid">
       <div class="footer__container content">
         <div class="footer__container__column">
@@ -42,7 +42,8 @@ export default {
     Tag
   },
   props: {
-    event: Object
+    event: Object,
+    dark: Boolean
   },
   data: function () {
     return {
@@ -60,26 +61,25 @@ export default {
 <style lang="scss">
 .footer {
   position: relative;
-  background-color: $black;
+  background-color: var(--black);
   padding: var(--containerSpacingHeight) 0;
-
-  &--grid {
-    max-width: 1280px;
-    margin: 0 auto;
-  }
 
   &__container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color: $white;
-    max-width
+    max-width: 1280px;
 
     &__column {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       flex-grow: 1;
+      
+      p, strong {
+        font-size: 12px;
+        color: var(--white);
+      }
     }
 
     &__link {
@@ -89,12 +89,8 @@ export default {
 
     &__link,
     &__mail {
-      color: $white;
+      color: var(--white);
       text-decoration: underline;
-    }
-
-    strong {
-      font-size: 12px;
     }
   }
 
@@ -124,6 +120,16 @@ export default {
         margin-bottom: 5px;
       }
     }
+  }
+
+  &--dark {
+    --black: #ffffff;
+    --white: #000000;
+  }
+
+  &--grid {
+    max-width: 1280px;
+    margin: 0 auto;
   }
 }
 </style>

@@ -1,22 +1,49 @@
 <template>
-  <div id="app">
-    <Navigation>
-      <ul>
-        <li v-for="route in routes" :key="route.path">
-          <router-link :to="route.path">{{ route.name }}</router-link>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <router-link to="/booker">&rarr; Mieten</router-link>
-        </li>
-      </ul>
-    </Navigation>
-    <main>
-      <Loader v-show="isLoading()" />
-      <router-view v-show="!isLoading()" />
-    </main>
-    <Footer v-show="!isLoading()" />
+  <div id="app" :class="{'app__dark' : isDark}">
+    <template v-if="isDark">
+      <Navigation dark>
+        <ul v-if="bookRoutes.length">
+          <li  v-for="route in bookRoutes" :key="route.path">
+            <router-link :to="route.path">{{ route.name }}</router-link>
+          </li>
+        </ul>
+        <ul v-else></ul>
+        <ul>
+          <li>
+            <router-link to="/">&rarr; Besucher</router-link>
+          </li>
+        </ul>
+      </Navigation>
+
+      <main class="main__dark">
+        <Loader v-show="isLoading()" />
+        <router-view v-show="!isLoading()" />
+      </main>
+
+      <Footer v-show="!isLoading()" dark />
+    </template>
+
+    <template v-else>
+      <Navigation>
+        <ul>
+          <li v-for="route in routes" :key="route.path">
+            <router-link :to="route.path">{{ route.name }}</router-link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <router-link to="/mieten">&rarr; Veranstalter</router-link>
+          </li>
+        </ul>
+      </Navigation>
+
+      <main>
+        <Loader v-show="isLoading()" />
+        <router-view v-show="!isLoading()" />
+      </main>
+
+      <Footer v-show="!isLoading()" />
+    </template>
   </div>
 </template>
 
@@ -34,7 +61,9 @@ export default {
   data () {
     return {
       pages: null,
-      routes: []
+      routes: [],
+      bookRoutes: [],
+      isDark: undefined
     }
   },
   methods: {
@@ -44,23 +73,54 @@ export default {
   },
   created() {
     this.$router.options.routes.forEach(route => {
+      if (route.path === '/mieten') {
+        route.children.forEach(child => {
+          this.bookRoutes.push({
+            name: child.name,
+            path: child.path
+          });
+        });
+      }
       if (route.name) { 
         this.routes.push({
             name: route.name,
             path: route.path
         });
       } 
-    })
+    });
+  },
+  watch: {
+    $route() {
+      this.isDark = this.$router.currentRoute.path.includes('/mieten');
+    }
   }
 }
 </script>
 
 <style lang="scss">
-main {
+#app {
+  position: relative;
+  z-index: -1;
+
+  &.app__dark {
+    background-color: #030303;
+  }
+
+  main {
+  position: relative;
   max-width: 1280px;
   margin: 0 auto;
   min-height: calc(100vh - 50px);
   overflow-x: hidden;
   box-shadow: 0 5px 100px 0px #f3f3f3;
+  background-color: var(--white);
+  z-index: -1;
+
+  &.main__dark {
+    --black: #ffffff;
+    --white: #000000;
+    box-shadow: none;
+  }
+}
 }
 </style>

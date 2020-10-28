@@ -1,10 +1,11 @@
 <template>
-  <div class="navigation">
-    <div class="base-grid navigation__main--grid">
+  <div class="navigation" :class="{'navigation--dark' : dark}">
+    <div class="navigation__main--grid base-grid">
       <div class="navigation__main content large-full">
         <div class="logo__wrapper">
-          <router-link to="/">
-            <div class="navigation__main__logo">ABDERA</div>
+          <router-link :to="dark ? '/mieten' : '/'">
+            <div v-if="dark" class="navigation__main__logo">ABDERA Mieten</div>
+            <div v-else class="navigation__main__logo">ABDERA</div>
           </router-link>
         </div>
         <div 
@@ -22,7 +23,7 @@
       </div>
     </div>
     <transition name="toggleMenuBackButton">
-      <div v-if="this.$route.path.includes('/event/')" class="base-grid navigation__optional--grid">
+      <div v-if="this.$route.path.includes('/event/')" class="navigation__optional--grid base-grid">
         <div v-on:click="goBack()" class="navigation__optional content">
           &larr; Übersicht
         </div>
@@ -34,6 +35,9 @@
 <script>
 export default {
   name: 'Navigation',
+  props: {
+    dark: Boolean
+  },
   data: function () {
     return {
       showMenu: false
@@ -60,10 +64,10 @@ export default {
   position: sticky;
   top: 0;
   left: 0;
-  background-color: $white;
+  background-color: var(--white);
   z-index: 100;
   -webkit-backface-visibility: hidden;
-  border-bottom: 2px solid $black;
+  border-bottom: 2px solid var(--black);
 
   .navigation__main__logo {
     display: flex;
@@ -74,7 +78,7 @@ export default {
     font-size: 14px;
     letter-spacing: 0.2rem;
     line-height: $mainMenuHeight;
-    color: $black;
+    color: var(--black);
     
     &::before {
       content: '';
@@ -84,7 +88,7 @@ export default {
       height: 23px;
       margin-right: 15px;
       border-radius: 50%;
-      background-color: $black;
+      background-color: var(--black);
     }
 
     @include breakpoint('large') {
@@ -138,7 +142,7 @@ export default {
       height: calc(var(--vh, 1vh) * 100 - 50px);
       top: $mainMenuHeight;
       left: 0;
-      background-color: $black;
+      background-color: var(--black);
 
       &--distributor {
         display: flex;
@@ -160,6 +164,10 @@ export default {
           font-family: 'WorkSansRegular';
           z-index: 1;
 
+          &:hover::before {
+            background-color: var(--white);
+          }
+
           &:not(:first-child) {
             margin-top: 20px;
           }
@@ -172,9 +180,11 @@ export default {
             left: 5px;
             height: 100%;
             width: 100%;
-            border: 2px solid $white;
+            border: 2px solid var(--white);
             box-sizing: border-box;
             z-index: -1;
+
+            transition: all .15s ease-in;
           }
 
           a {
@@ -182,9 +192,9 @@ export default {
             display: inline-block;
             padding: 12px 33px;
             width: 100%;
-            background-color: $black;
-            color: $white;
-            border: 2px solid $white;
+            background-color: var(--black);
+            color: var(--white);
+            border: 2px solid var(--white);
           }
         }
       }
@@ -194,12 +204,32 @@ export default {
   &__optional--grid {
     @include font(subline);
     text-transform: none;
-    background-color: $black;
-    color: $white;
+    background-color: var(--black);
+    color: var(--white);
     height: 30px;
     line-height: 30px;
     transform-origin: top;
     overflow: hidden;
+  }
+
+  &--dark {
+    --black: #ffffff;
+    --white: #000000;
+
+    .navigation__main {
+    
+      &__hamburger {
+        &::after {
+          background: url('../assets/symbols/hamburger-white.svg') center 2px no-repeat !important;
+        }
+      }
+
+      &__hamburger--open {
+        &::after {
+          background: url('../assets/symbols/close-white.svg') center 2px no-repeat !important;
+        }
+      }
+    }
   }
 }
 

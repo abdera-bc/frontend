@@ -16,20 +16,34 @@ export default {
     day: String,
     month: String
   }
-
 }
 </script>
 
 <style lang="scss">
 .programm__item__date__container {
   position: relative;
-  width: 49px;
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50px;
   padding: 5px;
-  background-color: $white;
+  margin-top: -7px;
+  background-color: var(--white);
+
+  span {
+    position: relative;
+    display: inline-block;
+    @include font('subline');
+    line-height: 1em;
+
+    &:last-child {
+      
+      margin-top: 10px;
+    }
+  }
 
   h1 {
-    margin-top: -2px;
+    margin-top: 10px;
   }
 }
 </style>

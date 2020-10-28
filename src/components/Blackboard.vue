@@ -6,7 +6,7 @@
         <li v-for="entry in entrys.slice(0, 1)" :key="entry.home_blackboard_title">
           <div>
             <h1>{{ entry.home_blackboard_title }}</h1>
-            <div class="rendered-content not-indented" v-html="entry.home_blackboard_content"></div>
+            <div class="rendered-content rendered-content--tight rendered-content--onBlack not-indented" v-html="entry.home_blackboard_content"></div>
           </div>
         </li>
       </ul>
@@ -25,13 +25,13 @@ export default {
 
 <style scoped lang="scss">
 .blackboard {
-  background-color: $black;
-  color: $white;
+  background-color: var(--black);
   padding: var(--containerSpacingHeight) 0;
   z-index: 1;
 
   &__title {
     margin-bottom: 30px;
+    color: var(--white);
     text-decoration: underline;
   }
 
@@ -41,20 +41,21 @@ export default {
   }
 
   ul {
-    background-color: $black;
-    border-color: $white;
-    padding: 50px var(--contentSpacingWidth);
+    background-color: var(--black);
+    border-color: var(--white);
+    padding: 50px var(--contentSpacingWidth) 20px var(--contentSpacingWidth);
 
     li {
       list-style: none;
 
       h1 {
         margin-bottom: 50px;
+        color: var(--white);
       }
     }
 
     &::before {
-      border-color: $white;
+      border-color: var(--white);
       z-index: -1;
     }
   }

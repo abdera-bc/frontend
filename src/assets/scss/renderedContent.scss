@@ -17,9 +17,15 @@ strong {
 }
 
 .rendered-content {
+
+  &--onBlack {
+    --black: #ffffff;
+    --white: #000000;
+  }
+
   p {
     padding: 0 var(--textSpacingWidth);
-    margin-bottom: 0;
+    margin: var(--containerSpacingHeight) 0;
 
     a {
       text-decoration: underline;
@@ -40,14 +46,14 @@ strong {
       height: 100%;
       left: calc(var(--outerArea) * -1);
       transform: translateY(-50px);
-      background-color: $black;
+      background-color: var(--black);
       z-index: -1;
       box-sizing: none;
     }
 
     .wp-block-embed__wrapper {
       position: relative;
-      border: 2px solid $white;
+      border: 2px solid var(--white);
       margin: 0;
 
       &::after {
@@ -58,7 +64,7 @@ strong {
         left: -6px;
         height: 100%;
         width: 100%;
-        border: 2px solid $white;
+        border: 2px solid var(--white);
         z-index: -1;
       }
     }
@@ -68,9 +74,14 @@ strong {
       height: auto;
       margin: 0;
       vertical-align: middle;
+
+      @include breakpoint('medium') {
+        height: 520px;
+      }
     }
   }
 
+  // Embed Spotify
   .wp-block-embed-spotify {
     position: relative;
     padding: 50px var(--contentSpacingWidth);
@@ -84,14 +95,14 @@ strong {
       height: 100%;
       left: calc(var(--outerArea) * -1);
       transform: translateY(-50px);
-      background-color: $black;
+      background-color: var(--black);
       z-index: -1;
       box-sizing: none;
     }
 
     .wp-block-embed__wrapper {
       position: relative;
-      border: 2px solid $white;
+      border: 2px solid var(--white);
       margin: 0;
 
       &::after {
@@ -102,7 +113,7 @@ strong {
         left: -6px;
         height: 100%;
         width: 100%;
-        border: 2px solid $white;
+        border: 2px solid var(--white);
         z-index: -1;
       }
     }
@@ -118,7 +129,7 @@ strong {
   .custom-image-block {
     position: relative;
     padding: 50px var(--contentSpacingWidth);
-    margin: 20px 0 0 0;
+    margin: 0;
     height: 100%;
 
     &::before {
@@ -128,14 +139,14 @@ strong {
       height: 100%;
       left: calc(var(--outerArea) * -1);
       transform: translateY(-50px);
-      background-color: $black;
+      background-color: var(--black);
       z-index: -1;
       box-sizing: none;
     }
 
     .wp-block-image {
       position: relative;
-      border: 2px solid $white;
+      border: 2px solid var(--white);
       margin: 0;
       
       &::after {
@@ -146,7 +157,7 @@ strong {
         left: -6px;
         height: 100%;
         width: 100%;
-        border: 2px solid $white;
+        border: 2px solid var(--white);
         z-index: -1;
       }
     }
@@ -164,8 +175,8 @@ strong {
     position: relative;
     padding: 0 0 20px var(--contentSpacingWidth);
     margin: 30px;
-    border: 2px solid $black;
-    background-color: $white;
+    border: 2px solid var(--black);
+    background-color: var(--white);
 
     &::after {
       content: '';
@@ -175,7 +186,7 @@ strong {
       left: 2px;
       height: 100%;
       width: 100%;
-      border: 2px solid $black;
+      border: 2px solid var(--black);
       z-index: -1;
     }
 
@@ -191,6 +202,12 @@ strong {
 
   * {
     margin-top: 20px;
+  }
+
+  &--tight {
+    p {
+      margin: var(--textSpacingHeight) 0;
+    }
   }
   
 }

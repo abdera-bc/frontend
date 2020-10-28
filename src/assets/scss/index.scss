@@ -11,10 +11,12 @@ html {
 }
 
 body {
+  position: relative;
   padding: 0;
   margin: 0;
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  z-index: -1;
 }
 
 ::-webkit-scrollbar {
@@ -22,7 +24,7 @@ body {
 }
 
 a {
-  color: $black;
+  color: var(--black);
   text-decoration: none;
 
   &.text--subline {
@@ -88,8 +90,8 @@ a {
 .frame {
   &-bl {
     position: relative;
-    background-color: $white;
-    border: 2px solid $black;
+    background-color: var(--white);
+    border: 2px solid var(--black);
 
     &::before {
       content: '';
@@ -99,15 +101,15 @@ a {
       left: -6px;
       height: 100%;
       width: 100%;
-      border: 2px solid $black;
+      border: 2px solid var(--black);
       z-index: -1;
     }
   }
 
   &-br {
     position: relative;
-    background-color: $white;
-    border: 2px solid $black;
+    background-color: var(--white);
+    border: 2px solid var(--black);
     
     &::before {
       content: '';
@@ -117,7 +119,7 @@ a {
       left: 2px;
       height: 100%;
       width: 100%;
-      border: 2px solid $black;
+      border: 2px solid var(--black);
       z-index: -1;
     }
   }

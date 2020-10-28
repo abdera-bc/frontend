@@ -24,8 +24,8 @@ export default {
   position: -webkit-sticky;
   @include font(subline);
   text-transform: none;
-  background-color: $black;
-  color: $white;
+  background-color: var(--black);
+  color: var(--white);
   line-height: 30px;
   height: 30px;
   transform: translateY(-2px);

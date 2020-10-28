@@ -22,7 +22,7 @@
 
       <div class="home__description full base-grid">
         <div class="home__description_wrapper content">
-          <div class="rendered-content" v-html="page.content"></div>
+          <div class="rendered-content rendered-content--tight rendered-content--onBlack" v-html="page.content"></div>
           <Tag 
             class="home__description__link" 
             content="Mehr über uns" 
@@ -119,7 +119,7 @@ export default {
 
     &__title {
       position: relative;
-      background-color: $black;
+      background-color: var(--black);
 
       &__wrapper {
         transform: translateY(-50%);
@@ -130,29 +130,28 @@ export default {
           padding: 12px;
           margin-top: -100px;
           left: 150px;
-          background-color: $white;
+          background-color: var(--white);
           text-decoration: none;
 
           &::before {
-            background-color: $white;
+            background-color: var(--white);
           }
         }
 
         h1 {
           padding: 12px;
           display: inline-block;
-          background-color: $white;
+          background-color: var(--white);
 
           &::before {
-            background-color: $white;
+            background-color: var(--white);
           }
         }
       }
     }
 
     &__description {
-      background-color: $black;
-      color: $white;
+      background-color: var(--black);
       padding-bottom: var(--containerSpacingHeight);
 
       .rendered-content {
@@ -197,7 +196,7 @@ export default {
           }
 
           &::before {
-            background-color: $white;
+            background-color: var(--white);
           }
         }
       }
@@ -220,7 +219,7 @@ export default {
           }
 
           &::before {
-            background-color: $white;
+            background-color: var(--white);
           }
         }
       }

@@ -6,8 +6,8 @@
     </div>
 
     <div class="program__item--left">
-      <ProgramItemDate v-if="overview" :weekday="event.date.weekday" :day="event.date.day" :month="event.date.month" />
-      <ProgramItemDate v-else :weekday="event.date.weekday" :day="event.date.day" />
+      <ProgramItemDate v-if="overview" :weekday="weekday" :day="event.date.day" :month="month" />
+      <ProgramItemDate v-else :weekday="weekday" :day="event.date.day" />
     </div>
 
     <div class="program__item--right">
@@ -59,6 +59,35 @@ export default {
   props: {
     event: Object,
     overview: Boolean
+  },
+  computed: {
+    weekday: function () {
+      return {
+        Mon: 'Mo',
+        Tue: 'Di',
+        Wed: 'Mi',
+        Thu: 'Do',
+        Fri: 'Fr',
+        Sat: 'Sa',
+        Sun: 'So'
+      }[this.event.date.weekday]
+    },
+    month: function () {
+      return {
+        Jan: 'Jan',
+        Feb: 'Feb',
+        Mar: 'März',
+        Apr: 'Apr',
+        May: 'Mai',
+        June: 'Jun',
+        July: 'Jul',
+        Aug: 'Aug',
+        Sept: 'Sept',
+        Oct: 'Okt',
+        Nov: 'Nov',
+        Dec: 'Dez',
+      }[this.event.date.month]
+    }
   }
 }
 </script>
@@ -82,7 +111,7 @@ export default {
   }
 
   &__title {
-    color: $black;
+    color: var(--black);
     margin: 10px 0;
   }
 
@@ -101,7 +130,7 @@ export default {
   }
 
   &__border {
-    border-bottom: 2px solid $black;
+    border-bottom: 2px solid var(--black);
     margin-top: 40px;
   }
 

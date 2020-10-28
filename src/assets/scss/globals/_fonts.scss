@@ -15,16 +15,18 @@
     font-family: 'WorkSansRegular', Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    line-height: 1.25em;
+    line-height: 1.5em;
     text-transform: none;
+    color: var(--black);
   }
 
   @if $selector == text-bold {
     font-family: 'WorkSansSemiBold', Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 500;
-    line-height: 1.25em;
+    line-height: 1.5em;
     text-transform: none;
+    color: var(--black);
   }
 
   @if $selector == subline {
@@ -33,6 +35,7 @@
     font-weight: 500;
     line-height: 1em;
     text-transform: uppercase;
+    color: var(--black);
   }
 
   @if $selector == caption {
@@ -41,6 +44,7 @@
     font-weight: 500;
     line-height: 1.25rem;
     text-transform: none;
+    color: var(--black);
   }
 
   @if $selector == headline {
@@ -49,6 +53,7 @@
     font-weight: 600;
     line-height: 1.25em;
     text-transform: none;
+    color: var(--black);
   }
 
   @if $selector == title {
@@ -57,5 +62,6 @@
     font-weight: 600;
     line-height: 1.25em;
     text-transform: none;
+    color: var(--black);
   }
 }

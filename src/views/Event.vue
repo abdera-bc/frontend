@@ -106,10 +106,10 @@ export default {
     &__headline {
       display: inline-block;
       padding: 12px;
-      background-color: $white;
+      background-color: var(--white);
 
       &::before {
-        background-color: $white;
+        background-color: var(--white);
       }
     }
   }
@@ -124,7 +124,7 @@ export default {
 
   &__content {
     padding-bottom: 20px;
-    border-bottom: 2px solid $black;
+    border-bottom: 2px solid var(--black);
 
     &__tags {
       padding: 20px var(--contentSpacingWidth) 0 var(--contentSpacingWidth);

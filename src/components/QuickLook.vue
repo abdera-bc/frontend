@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .quicklook {
   padding: 10px var(--contentSpacingWidth) 30px var(--contentSpacingWidth);
-  border-bottom: 2px solid $black;
+  border-bottom: 2px solid var(--black);
 
   &__title {
     text-decoration: underline;
@@ -54,7 +54,7 @@ export default {
 
   &__container {
     padding: 20px;
-    background-color: $white;
+    background-color: var(--white);
 
     p {
       margin-top: 0;
