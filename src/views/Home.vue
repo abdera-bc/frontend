@@ -129,13 +129,9 @@ export default {
           display: inline-block;
           padding: 12px;
           margin-top: -100px;
-          right: 30px;
+          left: 150px;
           background-color: $white;
           text-decoration: none;
-
-          h1 {
-            line-height: 1.5rem;
-          }
 
           &::before {
             background-color: $white;
