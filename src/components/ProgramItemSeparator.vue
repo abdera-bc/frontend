@@ -1,6 +1,6 @@
 <template>
   <div class="programm__item__separator base-grid">
-    <div class="content-width">
+    <div class="content">
       {{ month }} {{ year }} &darr;
     </div>
   </div>

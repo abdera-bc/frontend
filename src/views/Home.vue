@@ -1,65 +1,71 @@
 <template>
-  <div v-if="page" class="home base-grid">
-    <div class="home__image full-width">
-      <img :src="page.image" alt="">
-    </div>
-
-    <div class="home__title full-width base-grid">
-      <div class="home__title__wrapper content-width">
-        <h2
-          v-if="page.subtitle"
-          class="home__title__subtitle text--headline frame-bl" 
-          v-html="page.subtitle">
-        </h2>
-        <h1
-          v-if="page.title"
-          class="text--headline frame-br"
-          v-html="page.title">
-        </h1>
+  <div v-if="page" class="home">
+    <div class="home__wrapper base-grid">
+      <div class="home__image full">
+        <img :src="page.image" alt="">
       </div>
-    </div>
 
-    <div class="home__description full-width base-grid">
-      <div class="home__description_wrapper content-width">
-        <div class="rendered-content" v-html="page.content"></div>
-        <Tag 
-          class="home__description__link" 
-          content="Mehr über uns" 
-          url="/ueber" 
-          dark
-        />
-      </div>
-    </div>
-
-    <Overview show="3" />
-
-    <Blackboard :entrys="page.blackboard" />
-
-    <div class="home__socialmedia content-width">
-      <SocialLink type="facebook" dark />
-      <SocialLink type="instagram" dark />
-      <SocialLink type="youtube" dark />
-    </div>
-
-    <div class="home__help full-width base-grid">
-      <div class="home__help__image full-width"></div>
-      <div class="home__help__wrapper content-width">
-        <h1 class="frame-br">Freibier?!</h1>
-        <div class="home__help__content">
-          <p class="frame-bl"><strong>... gibts bei uns nur hinter der Theke (und Kasse).</strong><br />
-          Wir suchen immer fleißige Freiwillige, die mit uns den Laden schmeißen!</p>
+      <div class="home__title full base-grid">
+        <div class="home__title__wrapper content">
+          <h2
+            v-if="page.subtitle"
+            class="home__title__subtitle text--headline frame-bl" 
+            v-html="page.subtitle">
+          </h2>
+          <h1
+            v-if="page.title"
+            class="text--headline frame-br"
+            v-html="page.title">
+          </h1>
         </div>
-        <div class="home__help__bottom content-width">
-        <Tag 
-            class="home__help__link" 
-            content="Helfer werden" 
-            url="/helfen" 
+      </div>
+
+      <div class="home__description full base-grid">
+        <div class="home__description_wrapper content">
+          <div class="rendered-content" v-html="page.content"></div>
+          <Tag 
+            class="home__description__link" 
+            content="Mehr über uns" 
+            url="/ueber" 
             dark
           />
-      </div>
+        </div>
       </div>
     </div>
 
+      <Overview show="3" />
+
+    <div class="home__wrapper base-grid">
+      <Blackboard :entrys="page.blackboard" />
+
+      <div class="home__socialmedia content">
+        <SocialLink type="facebook" dark />
+        <SocialLink type="instagram" dark />
+        <SocialLink type="youtube" dark />
+      </div>
+    </div>
+    <div class="home__wrapper base-grid">
+      <div class="home__help full base-grid">
+        <div class="home__help__image full"></div>
+        <div class="home__help__wrapper content medium-right">
+          <h1 class="frame-br">Freibier?!</h1>
+          <div class="home__help__content">
+            <p class="frame-bl">
+              <strong>... gibts bei uns nur hinter der Theke (und Kasse).</strong><br />
+              Wir suchen immer fleißige Freiwillige, die mit uns den Laden schmeißen!<br />
+                <span class="home__help__button">
+                  <Tag 
+                      class="home__help__link" 
+                      content="Helfer werden" 
+                      url="/helfen" 
+                      dark
+                    />
+                </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -151,40 +157,48 @@ export default {
     &__description {
       background-color: $black;
       color: $white;
-      padding-bottom: 40px;
+      padding-bottom: var(--containerSpacingHeight);
 
       .rendered-content {
         margin-bottom: 20px;
       }
 
       &__link {
-        margin-left: 30px;
+        margin-left: var(--textSpacingWidth);
       }
     }
 
     &__socialmedia {
       position: relative;
-      height: 100px;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      padding: 30px 0;
+      padding: var(--containerSpacingHeight) var(--contentSpacingWidth) ;
     }
 
     &__help {
       &__image {
         height: 500px;
         background: url(../assets/images/abdera-helfen.jpg) no-repeat;
-        background-size: auto 100%;
+        background-size: cover;
         background-position: right;
         z-index: -1;
+
+        @include breakpoint('medium') {
+          height: 860px;
+        }
       }
 
       &__wrapper {
         h1 {
+          position: absolute;
           display: inline-block;
           padding: 12px 20px;
           transform: translateY(-450px);
+          
+          @include breakpoint('medium') {
+            transform: translate(-50%, -400px);
+          }
 
           &::before {
             background-color: $white;
@@ -194,10 +208,15 @@ export default {
 
       &__content {
         margin-top: -150px;
-        padding: 0 30px;
+        padding: 0 var(--contentSpacingWidth);
+
+        @include breakpoint('medium') {
+          margin-top: -300px;
+          padding: 0;
+        }
 
         p {
-          padding: 30px;
+          padding: 30px var(--contentSpacingWidth);
 
           strong {
             display: inline-block;
@@ -210,9 +229,9 @@ export default {
         }
       }
 
-      &__bottom {
-        padding: 0 60px;
-        margin: 20px 0 30px 0;
+      &__button {
+        display: inline-block;
+        margin-top: 20px;
       }
     }
   }

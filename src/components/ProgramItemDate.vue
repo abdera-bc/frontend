@@ -1,10 +1,10 @@
 <template>
   <div class="programm__item__date">
-    <span class="tex--subline">{{ weekday }}</span>
     <div class="programm__item__date__container frame-br">
+      <span class="tex--subline">{{ weekday }}</span>
       <h1>{{ day }}.</h1>
+      <span v-if="month" class="tex--subline">{{ month }}</span>
     </div>
-    <span v-if="month" class="tex--subline">{{ month }}</span>
   </div>
 </template>
 
@@ -23,15 +23,13 @@ export default {
 <style lang="scss">
 .programm__item__date__container {
   position: relative;
-  margin-top: 7px;
-  margin-bottom: 10px;
   width: 49px;
-  height: 49px;
+  margin-bottom: 10px;
+  padding: 5px;
   background-color: $white;
-  text-align: center;
 
   h1 {
-    line-height: 45px;
+    margin-top: -2px;
   }
 }
 </style>

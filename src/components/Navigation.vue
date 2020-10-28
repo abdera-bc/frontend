@@ -1,7 +1,7 @@
 <template>
   <div class="navigation">
     <div class="base-grid navigation__main--grid">
-      <div class="navigation__main content-width">
+      <div class="navigation__main content large-full">
         <div class="logo__wrapper">
           <router-link to="/">
             <div class="navigation__main__logo">ABDERA</div>
@@ -14,8 +14,8 @@
         </div>
         <transition name="toggleMobileMenu">
           <nav v-if="showMenu" class="navigation__main__container base-grid">
-            <div @click="showMenu = false" class="navigation__main__container--distributor content-width">
-              <slot class="content-width"></slot>
+            <div @click="showMenu = false" class="navigation__main__container--distributor content">
+              <slot class="content"></slot>
             </div>
           </nav>
         </transition>
@@ -23,7 +23,7 @@
     </div>
     <transition name="toggleMenuBackButton">
       <div v-if="this.$route.path.includes('/event/')" class="base-grid navigation__optional--grid">
-        <div v-on:click="goBack()" class="navigation__optional content-width">
+        <div v-on:click="goBack()" class="navigation__optional content">
           &larr; Übersicht
         </div>
       </div>
@@ -63,6 +63,7 @@ export default {
   background-color: $white;
   z-index: 100;
   -webkit-backface-visibility: hidden;
+  border-bottom: 2px solid $black;
 
   .navigation__main__logo {
     display: flex;
@@ -84,6 +85,10 @@ export default {
       margin-right: 15px;
       border-radius: 50%;
       background-color: $black;
+    }
+
+    @include breakpoint('large') {
+      padding-left: 15px;
     }
   }
 
@@ -122,7 +127,8 @@ export default {
     justify-content: space-between;
 
     &--grid {
-      border-bottom: 2px solid $black;
+      margin: 0 auto;
+      max-width: 1280px;
     }
 
     &__container {

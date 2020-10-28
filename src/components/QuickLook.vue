@@ -1,5 +1,5 @@
 <template>
-  <div class="quicklook content-width">
+  <div class="quicklook content">
     <p class="quicklook__title text--subline">Alles auf einen Bilck:</p>
     <div class="quicklook__container frame-br">
       <p>
@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss">
 .quicklook {
-  padding: 10px 30px 30px 30px;
+  padding: 10px var(--contentSpacingWidth) 30px var(--contentSpacingWidth);
   border-bottom: 2px solid $black;
 
   &__title {

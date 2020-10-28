@@ -1,7 +1,7 @@
 <template>
   <div class="event base-grid">
     <template v-if="event">
-      <div class="event__title content-width">
+      <div class="event__title content">
         <p class="event__title__date">
           {{ event.date.weekday }}, 
           {{ event.date.day }}. 
@@ -11,11 +11,11 @@
           <h1 v-html="event.title"></h1>
         </div>
       </div>
-      <div class="event__image full-width">
+      <div class="event__image full">
         <img v-if="event.image" :src="event.image">
       </div>
       <EventInfo :event="event" />
-      <div class="event__content content-width">
+      <div class="event__content content">
         <div class="rendered-content" v-html="event.content"></div>
         <div v-if="event.spotify || event.website" class="event__content__tags">
           <Tag v-if="event.spotify" content="Spotify" :url="event.spotify" />
@@ -23,7 +23,7 @@
         </div>
       </div>
       <QuickLook :event="event" />
-      <div class="event__owner content-width">
+      <div class="event__owner content">
         <template v-if="event.presenter">
           <p>
             <Tag content="Präsentiert von" /><a class="event__owner__link" :href="event.presenter.url">{{ event.presenter.title }}</a>
@@ -127,7 +127,7 @@ export default {
     border-bottom: 2px solid $black;
 
     &__tags {
-      padding: 20px 30px 0 30px;
+      padding: 20px var(--contentSpacingWidth) 0 var(--contentSpacingWidth);
     }
   }
 

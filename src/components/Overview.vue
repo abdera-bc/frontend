@@ -1,9 +1,11 @@
 <template>
-  <div class="overview content-width">
-    <div class="overview__container">
-      <router-link to="/programm">
-        <h1 class="frame-br">Nächste Veranstaltungen</h1>
-      </router-link>
+  <div class="overview">
+    <div class="overview__container base-grid">
+      <div class="overview__container__left">
+        <router-link to="/programm">
+          <h1 class="frame-br">Nächste Veranstaltungen</h1>
+        </router-link>
+      </div>
     </div>
     <template v-for="event in events.slice(0, 3)">
       <ProgramItem  :key="event.id" :event="event" overview/>
@@ -57,16 +59,24 @@ export default {
 
 <style scoped lang="scss">
 .overview {
-  &__container {
-    padding: 20px 0;
+  padding: var(--containerSpacingHeight) 0;
 
+  &__container {
     h1 {
+      display: inline-block;
       padding: 12px;
+    }
+
+    &__left {
+      grid-column-start: 2;
+      grid-column-end: 4;
+      padding-bottom: 20px;
     }
 
     &__right {
       grid-column-start: 3;
-      grid-column-end: 5;
+      grid-column-end: 6;
+      padding-top: 20px;
     }
   }
 }

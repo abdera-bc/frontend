@@ -1,9 +1,9 @@
 <template>
   <div v-if="page" class="page base-grid">
-    <div class="page__image full-width">
+    <div class="page__image full">
       <img v-if="page.image" :src="page.image">
     </div>
-    <div class="page__title content-width">
+    <div class="page__title content">
       <div v-if="page.subtitle" class="page__title__subline frame-br">
           <h1 v-html="page.subtitle"></h1>
       </div>
@@ -12,7 +12,7 @@
           <h1 v-else>{{ page.wp_title }}</h1>
       </div>
     </div>
-    <div class="page__content content-width">
+    <div class="page__content content">
       <div class="rendered-content" v-html="page.content"></div>
     </div>
   </div>
@@ -103,7 +103,7 @@ export default {
     padding-bottom: 20px;
 
     &__tags {
-      padding: 20px 30px 0 30px;
+      padding: 20px var(--contentSpacingWidth) 0 var(--contentSpacingWidth);
     }
   }
 }

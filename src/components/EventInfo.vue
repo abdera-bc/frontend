@@ -1,5 +1,5 @@
 <template>
-  <div class="event__info content-width">
+  <div class="event__info content">
     <div>
       <Tag content="Info" /> 
     </div>

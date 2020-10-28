@@ -1,27 +1,29 @@
 <template>
-  <div class="footer base-grid">
-    <div class="footer__container content-width">
-      <div class="footer__container__column">
-        <p class="text--caption">
-          <strong> © {{ currentYear }} Lilienthal e.V.<br />
-          Kulturhalle Abdera <br /></strong>
-          Breslaustraße 13 <br />
-          88400 Biberach/Riß <br />
-        </p>
-        <p class="text--caption">
-          +49 (0) 7351 / 16 93 54 <br />
-          <a class="footer__container__mail" href="mailto:info@abdera-bc.de">info@abdera-bc.de</a>
-        </p>
-      </div>
-      <div class="footer__container__column">
-        <div class="footer__socialmedia">
-          <SocialLink type="facebook" light small />
-          <SocialLink type="instagram" light small />
-          <SocialLink type="youtube" light small />
+  <div class="footer">
+    <div class="footer--grid base-grid">
+      <div class="footer__container content">
+        <div class="footer__container__column">
+          <p class="text--caption">
+            <strong> © {{ currentYear }} Lilienthal e.V.<br />
+            Kulturhalle Abdera <br /></strong>
+            Breslaustraße 13 <br />
+            88400 Biberach/Riß <br />
+          </p>
+          <p class="text--caption">
+            +49 (0) 7351 / 16 93 54 <br />
+            <a class="footer__container__mail" href="mailto:info@abdera-bc.de">info@abdera-bc.de</a>
+          </p>
         </div>
-        <div class="footer__menu">
-          <Tag content="Impressum" :url="this.config.BASE_URL + 'impressum'" dark />
-          <Tag content="Datenschutz" :url="this.config.BASE_URL + 'datenschutz'" dark />
+        <div class="footer__container__column">
+          <div class="footer__socialmedia">
+            <SocialLink type="facebook" light small />
+            <SocialLink type="instagram" light small />
+            <SocialLink type="youtube" light small />
+          </div>
+          <div class="footer__menu">
+            <Tag content="Impressum" :url="this.config.BASE_URL + 'impressum'" dark />
+            <Tag content="Datenschutz" :url="this.config.BASE_URL + 'datenschutz'" dark />
+          </div>
         </div>
       </div>
     </div>
@@ -59,13 +61,19 @@ export default {
 .footer {
   position: relative;
   background-color: $black;
-  height: 200px;
+  padding: var(--containerSpacingHeight) 0;
+
+  &--grid {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
 
   &__container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     color: $white;
+    max-width
 
     &__column {
       display: flex;

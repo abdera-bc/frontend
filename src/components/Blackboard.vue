@@ -1,6 +1,6 @@
 <template>
-  <div class="blackboard full-width base-grid">
-    <div class="blackboard__wrapper content-width ">
+  <div class="blackboard full base-grid">
+    <div class="blackboard__wrapper content ">
       <div class="blackboard__title text--subline">News</div>
       <ul class="frame-bl">
         <li v-for="entry in entrys.slice(0, 1)" :key="entry.home_blackboard_title">
@@ -27,7 +27,7 @@ export default {
 .blackboard {
   background-color: $black;
   color: $white;
-  padding: 100px 0;
+  padding: var(--containerSpacingHeight) 0;
   z-index: 1;
 
   &__title {
@@ -37,13 +37,13 @@ export default {
 
   &__wrapper {
     position: relative;
-    padding: 0 30px;
+    padding: 0 var(--contentSpacingWidth);
   }
 
   ul {
     background-color: $black;
     border-color: $white;
-    padding: 50px 30px;
+    padding: 50px var(--contentSpacingWidth);
 
     li {
       list-style: none;

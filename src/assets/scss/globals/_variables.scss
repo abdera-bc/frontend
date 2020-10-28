@@ -1,5 +1,24 @@
-$outerArea: 15px;
+// Layout
+:root {
+  --outerArea: 15px;
+  --contentSpacingWidth: 30px;
+  --textSpacingWidth: 30px;
+  --containerSpacingHeight: 80px;
+
+  @include breakpoint('medium') {
+    --outerArea: 190px;
+    --contentSpacingWidth: 75px;
+    --textSpacingWidth: 75px;
+  }
+
+  @include breakpoint('large') {
+    --textSpacingWidth: 150px;
+  }
+}
+
+$contentSpacingHeight: 50px;
 $mainMenuHeight: 50px;
 
+// Appearance
 $black: #000000;
 $white: #ffffff;
