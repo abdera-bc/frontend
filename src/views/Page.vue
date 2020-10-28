@@ -37,11 +37,11 @@ export default {
     }
   },
   mounted: function () {
-    this.getContent(this.$route.path.match(/[^/].*/i));
+    this.getContent(this.$route.path.substr(this.$route.path.lastIndexOf('/') + 1));
   },
   watch: {
     $route() {
-      this.getContent(this.$route.path.match(/[^/].*/i));
+      this.getContent(this.$route.path.substr(this.$route.path.lastIndexOf('/') + 1));
     }
   }
 }
@@ -69,7 +69,7 @@ export default {
     &__headline {
       display: inline-block;
       padding: 12px;
-      background-color: $white;
+      background-color: var(--white);
       margin-top: -50px;
       
       h1 {
@@ -77,7 +77,7 @@ export default {
       }
 
       &::before {
-        background-color: $white;
+        background-color: var(--white);
       }
     }
 
@@ -86,7 +86,7 @@ export default {
       display: inline-block;
       padding: 12px;
       right: 60px;
-      background-color: $white;
+      background-color: var(--white);
       margin-top: -150px;
 
       h1 {
@@ -94,14 +94,12 @@ export default {
       }
 
       &::before {
-        background-color: $white;
+        background-color: var(--white);
       }
     }
   }
 
   &__content {
-    padding-bottom: 20px;
-
     &__tags {
       padding: 20px var(--contentSpacingWidth) 0 var(--contentSpacingWidth);
     }

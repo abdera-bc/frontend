@@ -31,21 +31,21 @@ export default {
     padding: 0 20px;
     margin-right: 10px;
     border-radius: 30px;
-    border: 1px solid $black;
+    border: 1px solid var(--black);
     @include font(subline);
     line-height: 22px;
     text-transform: none;
 
     &__link {
       padding: 0 20px 0 15px;
-      color: $white;
-      background-color: $black;
+      color: var(--white);
+      background-color: var(--black);
       text-transform: none;
       line-height: 22px;
     }
 
     &--light {
-      border: 1px solid $white;
+      border: 1px solid var(--white);
     }
   }
 </style>

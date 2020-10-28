@@ -5,7 +5,7 @@ import Home from '../views/Home.vue'
 const Programm = () => Promise.resolve(import('../views/Program.vue'));
 const Page = () => Promise.resolve(import('../views/Page.vue'));
 const Event = () => Promise.resolve(import('../views/Event.vue'));
-const NotFound = () => Promise.resolve(import('../views/NotFound.vue'));
+// const NotFound = () => Promise.resolve(import('../views/NotFound.vue'));
 
 Vue.use(VueRouter)
 
@@ -35,16 +35,27 @@ const routes = [
     component: Page
   },
   {
+    path: '/mieten',
+    component: Page,
+    children: [
+      {
+        path: '/mieten/crew',
+        name: 'Crew',
+        component: Page
+      }
+    ]
+  },
+  {
     path: '/event/:id',
     component: Event
   },
-  {
-    path: '/404', 
-    component: NotFound
-  },
-  {
-    path: '*', redirect: '/404' 
-  },
+  // {
+  //   path: '/404', 
+  //   component: NotFound
+  // },
+  // {
+  //   path: '*', redirect: '/404' 
+  // }
 ]
 
 const router = new VueRouter({

@@ -17,7 +17,7 @@ export default {
   height: 2px;
   top: 50vh;
   left: 50%;
-  background-color: $black;
+  background-color: var(--black);
   transform: translate(-50%, -50%);
 
   animation: loading 2s linear infinite;
