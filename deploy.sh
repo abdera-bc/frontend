@@ -12,6 +12,6 @@ cd dist
 git init
 git add -A
 git commit -m "Release latest changes"
-git push -f git@github.com:abdera-bc/abdera-bc.github.io.git master:gh-pages
+git push -f git@github.com:abdera-bc/frontend master:live
 
 cd -
