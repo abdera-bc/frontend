@@ -2,15 +2,14 @@
   <div id="app" :class="{'app__dark' : isDark}">
     <template v-if="isDark">
       <Navigation dark>
-        <ul v-if="bookRoutes.length">
-          <li  v-for="route in bookRoutes" :key="route.path">
+        <ul>
+          <li v-for="route in routes" :key="route.path">
             <router-link :to="route.path">{{ route.name }}</router-link>
           </li>
         </ul>
-        <ul v-else></ul>
         <ul>
           <li>
-            <router-link to="/">&rarr; Besucher</router-link>
+            <router-link to="/mieten">&rarr; Veranstalter</router-link>
           </li>
         </ul>
       </Navigation>
@@ -20,15 +19,15 @@
         <router-view v-show="!isLoading()" />
       </main>
 
-      <Footer v-show="!isLoading()" dark>
-        <ul v-if="bookRoutes.length">
-          <li  v-for="route in bookRoutes" :key="route.path">
+      <Footer v-show="!isLoading()">
+        <ul>
+          <li v-for="route in routes" :key="route.path">
             <router-link :to="route.path">{{ route.name }}</router-link>
           </li>
         </ul>
         <ul>
           <li>
-            <router-link to="/">&rarr; Besucher</router-link>
+            <router-link to="/mieten">&rarr; Veranstalter</router-link>
           </li>
         </ul>
       </Footer>
@@ -84,7 +83,6 @@ export default {
     return {
       pages: null,
       routes: [],
-      bookRoutes: [],
       isDark: undefined
     }
   },
@@ -95,14 +93,6 @@ export default {
   },
   created() {
     this.$router.options.routes.forEach(route => {
-      if (route.path === '/mieten') {
-        route.children.forEach(child => {
-          this.bookRoutes.push({
-            name: child.name,
-            path: child.path
-          });
-        });
-      }
       if (route.name) { 
         this.routes.push({
             name: route.name,

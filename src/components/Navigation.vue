@@ -3,9 +3,8 @@
     <div class="navigation__main--grid base-grid">
       <div class="navigation__main content large-full">
         <div class="logo__wrapper">
-          <router-link :to="dark ? '/mieten' : '/'">
-            <div v-if="dark" class="navigation__main__logo">ABDERA Mieten</div>
-            <div v-else class="navigation__main__logo">ABDERA</div>
+          <router-link to="/">
+            <div class="navigation__main__logo">ABDERA</div>
           </router-link>
         </div>
         <div 
@@ -252,6 +251,11 @@ export default {
         &::after {
           background: url('../assets/symbols/close-white.svg') center 2px no-repeat !important;
         }
+      }
+
+      &__container {
+        --black: #000000;
+        --white: #ffffff;
       }
     }
   }
