@@ -23,7 +23,7 @@
 
       <div class="program__item__info text--subline">
         <span v-if="event.entry">
-          Ab: {{ event.entry }} •
+          Ab {{ event.entry }} •
         </span>
 
         <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">

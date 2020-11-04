@@ -57,7 +57,7 @@
                   <Tag 
                       class="home__help__link" 
                       content="Helfer werden" 
-                      url="/helfen" 
+                      url="/mitmachen" 
                       dark
                     />
                 </span>
@@ -177,6 +177,9 @@ export default {
     }
 
     &__help {
+      background-color: var(--black);
+      z-index: -1;
+
       &__image {
         height: 500px;
         background: url(../assets/images/abdera-helfen.jpg) no-repeat;

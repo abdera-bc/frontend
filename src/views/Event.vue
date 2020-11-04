@@ -101,6 +101,7 @@ export default {
     &__date {
       @include font(subline);
       text-decoration: underline;
+      margin: var(--paddingSmall) 0;
     }
 
     &__headline {
@@ -119,12 +120,18 @@ export default {
 
     img {
       width: 100%;
+      vertical-align: middle;
     }
   }
 
   &__content {
     padding-bottom: 20px;
+    border-top: 2px solid var(--black);
     border-bottom: 2px solid var(--black);
+    
+    .rendered-content {
+      margin-top: -2px;
+    }
 
     &__tags {
       padding: 20px var(--contentSpacingWidth) 0 var(--contentSpacingWidth);

@@ -44,6 +44,7 @@ export default {
 
   h1 {
     margin-top: 10px;
+    word-wrap: normal;
   }
 }
 </style>

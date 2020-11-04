@@ -30,20 +30,21 @@ const routes = [
     component: Page
   },
   {
-    path: '/helfen',
-    name: 'Helfen',
+    path: '/mitmachen',
+    name: 'Mitmachen',
     component: Page
   },
   {
     path: '/mieten',
     component: Page,
-    children: [
-      {
-        path: '/mieten/crew',
-        name: 'Crew',
-        component: Page
-      }
-    ]
+  },
+  {
+    path: '/datenschutz',
+    component: Page,
+  },
+  {
+    path: '/impressum',
+    component: Page,
   },
   {
     path: '/event/:id',

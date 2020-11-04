@@ -9,7 +9,7 @@
         </div>
 
         <span v-if="event.entry">
-          Ab: {{ event.entry }}
+          Ab {{ event.entry }}
         </span>
 
         <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
@@ -47,7 +47,11 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px 0;
+  padding: var(--paddingSmall) 0;
+  
+  + p {
+    border-top: 2px solid var(--black);
+  }
 
   &__container {
     display: flex;

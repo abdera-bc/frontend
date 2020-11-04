@@ -4,6 +4,7 @@
       <div class="navigation__main content large-full">
         <div class="logo__wrapper">
           <router-link to="/">
+            
             <div class="navigation__main__logo">ABDERA</div>
           </router-link>
         </div>
@@ -88,13 +89,15 @@ export default {
     
     &::before {
       content: '';
+      background: url('../assets/symbols/logo.svg') no-repeat;
+      background-position: center;
+      background-size: contain;
       display: block;
       align-self: center;
-      width: 23px;
-      height: 23px;
+      width: 32px;
+      height: 32px;
       margin-right: 15px;
       border-radius: 50%;
-      background-color: var(--black);
     }
 
     @include breakpoint('large') {
@@ -233,6 +236,7 @@ export default {
     line-height: 30px;
     transform-origin: top;
     overflow: hidden;
+    cursor: pointer;
   }
 
   &--dark {
@@ -240,7 +244,13 @@ export default {
     --white: #000000;
 
     .navigation__main {
-    
+      
+      &__logo {
+        &:before {
+          filter: invert(100%);
+        }
+      }
+
       &__hamburger {
         &::after {
           background: url('../assets/symbols/hamburger-white.svg') center 2px no-repeat !important;
