@@ -3,16 +3,20 @@
     <div>
       <Tag content="Info" /> 
     </div>
-    <div class="text--subline">
-        <span v-for="type in event.types" :key="type[2]"> 
-          <router-link :to="/type/ + type[1]">{{ type[0] }}</router-link> •
-        </span>
+    <div class="event__info__container text--subline">
+        <div class="event__info__event-type" v-for="type in event.types" :key="type[2]"> 
+          <span>{{ type[0] }}</span>
+        </div>
 
         <span v-if="event.entry">
-          Ab: {{ event.entry }} •
+          Ab: {{ event.entry }}
         </span>
 
-        <span v-if="event.ak && event.vvk">
+        <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
+          Gratis
+        </span>
+
+        <span v-else-if="event.ak && event.vvk">
           AK €{{ event.ak }} • VVK €{{ event.vvk }}
         </span>
 
@@ -38,12 +42,29 @@ export default {
 </script>
 
 <style lang="scss">
-.event {
-  &__info {
+.event__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px 0;
+
+  &__container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 20px 0;
+
+    > span:not(:last-child), > div {
+      &:after {
+        content: '\a0•\a0';
+      }
+    }
+  }
+
+  &__event-type {
+    span {
+      text-decoration: underline;
+    }
   }
 }
 </style>

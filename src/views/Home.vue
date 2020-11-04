@@ -32,11 +32,11 @@
         </div>
       </div>
     </div>
-
-      <Overview show="3" />
+      
+    <Overview show="3" />
 
     <div class="home__wrapper base-grid">
-      <Blackboard :entrys="page.blackboard" />
+      <Blackboard :entries="page.blackboard" />
 
       <div class="home__socialmedia content">
         <SocialLink type="facebook" dark />
@@ -87,6 +87,11 @@ export default {
   data() {
     return {
       page: null
+    }
+  },
+  computed: {
+    important: function () {
+      return this.page.important.title && this.page.important.content;
     }
   },
   methods: {

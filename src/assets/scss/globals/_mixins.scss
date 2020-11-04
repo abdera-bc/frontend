@@ -10,3 +10,44 @@ $breakpoints: (
     }
   }
 }
+
+@mixin frame($type, $borderColor, $backgroundColor) {
+
+  @if $type == bl {
+    position: relative;
+    background-color: var(--#{$backgroundColor});
+    border: 2px solid var(--#{$borderColor});
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 2px;
+      left: -6px;
+      height: 100%;
+      width: 100%;
+      background-color: var(--#{$backgroundColor});
+      border: 2px solid var(--#{$borderColor});
+      z-index: -1;
+    }
+  }
+
+  @if $type == br {
+    position: relative;
+    background-color: var(--#{$backgroundColor});
+    border: 2px solid var(--#{$borderColor});
+    
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 2px;
+      left: 2px;
+      height: 100%;
+      width: 100%;
+      background-color: var(--#{$backgroundColor});
+      border: 2px solid var(--#{$borderColor});
+      z-index: -1;
+    }
+  }
+}

@@ -12,9 +12,9 @@
 
     <div class="program__item--right">
       <div class="program__item__type text--subline">
-        <span v-for="type in event.types" :key="type[2]"> 
-          {{ type[0] + ' ' }}
-        </span>
+        <div v-for="type in event.types" :key="type[2]"> 
+          <span>{{ type[0] }}</span>
+        </div>
       </div>
       
       <router-link :to="/event/ + event.id"> 
@@ -26,7 +26,11 @@
           Ab: {{ event.entry }} •
         </span>
 
-        <span v-if="event.ak && event.vvk">
+        <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
+          Gratis
+        </span>
+
+        <span v-else-if="event.ak && event.vvk">
           AK €{{ event.ak }} • VVK €{{ event.vvk }}
         </span>
 
@@ -107,7 +111,18 @@ export default {
   }
 
   &__type {
-    text-decoration: underline !important;
+    display: flex;
+    flex-direction: row;
+    
+    > div:not(:last-child) {
+      &:after {
+        content: '\a0•\a0';
+      }
+    }
+
+    span {
+      text-decoration: underline;
+    }
   }
 
   &__title {

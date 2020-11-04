@@ -23,6 +23,10 @@ strong {
     --white: #000000;
   }
 
+  h2 {
+    margin: var(--containerSpacingHeight) 0;
+  }
+
   p {
     padding: 0 var(--textSpacingWidth);
     margin: var(--containerSpacingHeight) 0;
@@ -35,7 +39,7 @@ strong {
   // Video Player
   .wp-block-embed-youtube {
     position: relative;
-    padding: 50px var(--contentSpacingWidth);
+    padding: var(--containerSpacingHeight) var(--contentSpacingWidth);
     margin: 20px 0 0 0;
     height: 100%;
 
@@ -45,7 +49,7 @@ strong {
       width: 100vw;
       height: 100%;
       left: calc(var(--outerArea) * -1);
-      transform: translateY(-50px);
+      transform: translateY(calc(var(--containerSpacingHeight) * -1));
       background-color: var(--black);
       z-index: -1;
       box-sizing: none;
@@ -84,7 +88,7 @@ strong {
   // Embed Spotify
   .wp-block-embed-spotify {
     position: relative;
-    padding: 50px var(--contentSpacingWidth);
+    padding: var(--containerSpacingHeight) var(--contentSpacingWidth);
     margin: 20px 0 0 0;
     height: 100%;
 
@@ -94,7 +98,7 @@ strong {
       width: 100vw;
       height: 100%;
       left: calc(var(--outerArea) * -1);
-      transform: translateY(-50px);
+      transform: translateY(calc(var(--containerSpacingHeight) * -1));
       background-color: var(--black);
       z-index: -1;
       box-sizing: none;
@@ -125,10 +129,73 @@ strong {
     }
   }
 
+  .custom-file-block {
+    position: relative;
+    padding: 0 var(--textSpacingWidth);
+    margin: 0;
+    height: 100%;
+
+    + .custom-file-block {
+      margin-top: -2px;
+    }
+
+    .wp-block-file {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      min-height: calc(75px + var(--textSpacingHeight) * 2);
+      margin: 0;
+      padding: var(--textSpacingHeight) 20px var(--textSpacingHeight) 100px; 
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+
+      @include breakpoint('medium') {
+        padding: var(--textSpacingHeight) 20px var(--textSpacingHeight) 120px;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100%;
+        width: 50px;
+        left: var(--textSpacingWidth);
+        margin-left: 20px;
+        background: url('../symbols/document.svg') no-repeat;
+        background-position: top;
+        background-size: contain;
+
+        @include breakpoint('medium') {
+          margin-left: 40px;
+        }
+      }
+
+      a:first-child {
+        margin: 0;
+      }
+
+      .wp-block-file__button {
+        @include font(subline);
+        text-transform: unset;
+        background-color: var(--black);
+        color: var(--white);
+        line-height: 22px;
+        padding: 0 20px 0 15px;
+        border-radius: 30px;
+
+        &:before {
+          content: '\2193';
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
   // WP Image
   .custom-image-block {
     position: relative;
-    padding: 50px var(--contentSpacingWidth);
+    padding: var(--containerSpacingHeight) var(--contentSpacingWidth);
     margin: 0;
     height: 100%;
 
@@ -138,28 +205,16 @@ strong {
       width: 100vw;
       height: 100%;
       left: calc(var(--outerArea) * -1);
-      transform: translateY(-50px);
+      transform: translateY(calc(var(--containerSpacingHeight) * -1));
       background-color: var(--black);
       z-index: -1;
       box-sizing: none;
     }
 
     .wp-block-image {
-      position: relative;
-      border: 2px solid var(--white);
       margin: 0;
+      @include frame('bl', 'white', 'black');
       
-      &::after {
-        content: '';
-        position: absolute;
-        display: block;
-        top: 2px;
-        left: -6px;
-        height: 100%;
-        width: 100%;
-        border: 2px solid var(--white);
-        z-index: -1;
-      }
     }
 
     img {
@@ -174,7 +229,7 @@ strong {
   ul {
     position: relative;
     padding: 0 0 20px 40px;
-    margin: var(--contentSpacingWidth) var(--textSpacingWidth);
+    margin: var(--containerSpacingHeight) var(--textSpacingWidth);
     border: 2px solid var(--black);
     background-color: var(--white);
 

@@ -1,9 +1,9 @@
 <template>
   <div class="blackboard full base-grid">
     <div class="blackboard__wrapper content ">
-      <div class="blackboard__title text--subline">News</div>
+      <div class="blackboard__title text--subline">Aktuell</div>
       <ul class="frame-bl">
-        <li v-for="entry in entrys.slice(0, 1)" :key="entry.home_blackboard_title">
+        <li v-for="entry in entries" :key="entry.home_blackboard_title">
           <div>
             <h1>{{ entry.home_blackboard_title }}</h1>
             <div class="rendered-content rendered-content--tight rendered-content--onBlack not-indented" v-html="entry.home_blackboard_content"></div>
@@ -18,7 +18,8 @@
 export default {
   name: 'Blackboard',
   props: {
-    entrys: Array
+    entries: Array,
+    area: Object
   }
 }
 </script>
@@ -43,13 +44,21 @@ export default {
   ul {
     background-color: var(--black);
     border-color: var(--white);
-    padding: 50px var(--contentSpacingWidth) 20px var(--contentSpacingWidth);
+    padding: 0 20px;
+
+    @include breakpoint('medium') {
+      padding: var(--contentSpacingHeight) var(--contentSpacingWidth);
+    }
 
     li {
       list-style: none;
 
+      &:not(:last-child) {
+        border-bottom: 2px solid var(--white);
+      }
+
       h1 {
-        margin-bottom: 50px;
+        margin: var(--textSpacingHeight) 0;
         color: var(--white);
       }
     }
