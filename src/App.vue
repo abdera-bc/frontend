@@ -9,7 +9,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/mieten">&rarr; Veranstalter</router-link>
+            <router-link to="/vermietung">&rarr; Vermietung</router-link>
           </li>
         </ul>
       </Navigation>
@@ -27,7 +27,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/mieten">&rarr; Veranstalter</router-link>
+            <router-link to="/vermietung">&rarr; Vermietung</router-link>
           </li>
         </ul>
       </Footer>
@@ -42,7 +42,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/mieten">&rarr; Veranstalter</router-link>
+            <router-link to="/vermietung">&rarr; Vermietung</router-link>
           </li>
         </ul>
       </Navigation>
@@ -60,7 +60,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/mieten">&rarr; Veranstalter</router-link>
+            <router-link to="/vermietung">&rarr; Vermietung</router-link>
           </li>
         </ul>
       </Footer>
@@ -103,7 +103,7 @@ export default {
   },
   watch: {
     $route() {
-      this.isDark = this.$router.currentRoute.path.includes('/mieten');
+      this.isDark = this.$router.currentRoute.path.includes('/vermietung');
     }
   }
 }

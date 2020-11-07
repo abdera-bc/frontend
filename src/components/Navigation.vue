@@ -14,7 +14,7 @@
           :class="{'rotate-90 navigation__main__hamburger--open': showMenu}">
         </div>
         <transition name="toggleMobileMenu">
-          <nav v-if="showMenu" @click="showMenu = false" class="navigation__main__container--grid base-grid">
+          <nav id="nav" @click="evalClick" v-if="showMenu" class="navigation__main__container--grid base-grid">
             <div class="navigation__main__container full medium-right-border base-grid">
               <div class="navigation__main__container--distributor content medium-full">
                 <slot class="content"></slot>
@@ -48,12 +48,13 @@ export default {
   methods: {
     goBack: function () {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/programm');
+    },
+    evalClick: function (e) {
+      if (e.target.id !== 'nav' || e.target.baseURI === window.location.href) {
+        this.showMenu = false;
+        return;
+      }
     }
-  },
-  mounted() {
-    document.getElementById('app').addEventListener('click', function () {
-      this.showMenu = !this.showMenu;
-    });
   },
   watch: {
     $route () {

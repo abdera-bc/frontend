@@ -215,10 +215,24 @@ strong {
       box-sizing: none;
     }
 
-    .wp-block-image {
+    .custom-image-frame {
       margin: 0;
-      @include frame('bl', 'white', 'black');
-      
+
+      .wp-block-image {
+        margin: 0;
+        @include frame('bl', 'white', 'black');
+        
+        figcaption {
+          display: none;
+        }
+      }
+    }
+
+    figcaption {
+      @include font('caption');
+      color: var(--white);
+      margin: 0;
+      transform: translateY(20px);
     }
 
     img {

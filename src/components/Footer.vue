@@ -154,6 +154,10 @@ export default {
     }
   }
 
+  &__copyright {
+    font-size: 12px;
+  }
+
   &__menu {
     display: flex;
     flex-direction: column;

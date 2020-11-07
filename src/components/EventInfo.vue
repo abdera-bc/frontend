@@ -13,7 +13,7 @@
         </span>
 
         <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
-          Gratis
+          Eintritt frei
         </span>
 
         <span v-else-if="event.ak && event.vvk">
@@ -48,10 +48,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   padding: var(--paddingSmall) 0;
-  
-  + p {
-    border-top: 2px solid var(--black);
-  }
 
   &__container {
     display: flex;

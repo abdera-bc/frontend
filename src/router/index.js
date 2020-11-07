@@ -35,16 +35,20 @@ const routes = [
     component: Page
   },
   {
-    path: '/mieten',
-    component: Page,
+    path: '/vermietung',
+    component: Page
   },
   {
     path: '/datenschutz',
-    component: Page,
+    component: Page
+  },
+  {
+    path: '/mitgliederliste',
+    component: Page
   },
   {
     path: '/impressum',
-    component: Page,
+    component: Page
   },
   {
     path: '/event/:id',
