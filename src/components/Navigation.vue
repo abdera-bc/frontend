@@ -50,7 +50,11 @@ export default {
       window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/programm');
     },
     evalClick: function (e) {
-      if (e.target.id !== 'nav' || e.target.baseURI === window.location.href) {
+      const isSamePage =
+        e.target.baseURI === window.location.href 
+        && e.target.localName === 'a';
+
+      if (e.target.id === 'nav' || isSamePage) {
         this.showMenu = false;
         return;
       }
