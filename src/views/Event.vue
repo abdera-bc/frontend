@@ -26,12 +26,12 @@
       <div class="event__owner content">
         <template v-if="event.presenter">
           <p>
-            <Tag content="Präsentiert von" /><a class="event__owner__link" :href="event.presenter.url">{{ event.presenter.title }}</a>
+            <Tag content="Präsentiert von" /><a class="event__owner__link" target="_blank" :href="event.presenter.url">{{ event.presenter.title }}</a>
           </p>
         </template>
         <template v-if="event.organizer">
           <p>
-            <Tag content="Veranstalter" /><a class="event__owner__link" :href="event.organizer.url">{{ event.organizer.title }}</a>
+            <Tag content="Veranstalter" /><a class="event__owner__link" target="_blank" :href="event.organizer.url">{{ event.organizer.title }}</a>
           </p>
         </template>
         <template v-else>
@@ -134,7 +134,7 @@ export default {
     }
 
     &__tags {
-      padding: 20px var(--contentSpacingWidth) 0 var(--contentSpacingWidth);
+      padding: var(--containerSpacingHeight) var(--contentSpacingWidth) calc(var(--containerSpacingHeight) - 20px) var(--contentSpacingWidth);
     }
   }
 

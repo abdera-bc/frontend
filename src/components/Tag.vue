@@ -1,13 +1,15 @@
 <template>
   <span>
-    <a v-if="url" class="tag" :class="{'tag__link' : url || button, 'tag--light' : dark}" :href="url">
+    <a v-if="url" class="tag transition" :class="{'tag__link' : url || button || icon, 'tag--light' : dark}" :href="url">
         <span v-if="url">&rarr;</span>
         <span v-if="button">&darr;</span>
+        <span v-if="icon" v-html="icon"></span>
         {{ content.charAt(0).toUpperCase() + content.slice(1) }}
     </a>
-    <span v-else class="tag" :class="{'tag__link' : url || button, 'tag--light' : dark}">
+    <span v-else class="tag transition" :class="{'tag__link' : url || button || icon, 'tag--light' : dark}">
         <span v-if="url">&rarr;</span>
         <span v-if="button">&darr;</span>
+        <span v-if="icon" v-html="icon"></span>
         {{ content.charAt(0).toUpperCase() + content.slice(1) }}
     </span>
   </span>
@@ -19,6 +21,7 @@ export default {
   props: {
     content: String,
     url: String,
+    icon: String,
     button: Boolean,
     dark: Boolean
   }
@@ -42,6 +45,16 @@ export default {
       background-color: var(--black);
       text-transform: none;
       line-height: 22px;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--black);
+        background-color: var(--white);
+
+        span {
+          color: var(--black);
+        }
+      }
     }
 
     &--light {

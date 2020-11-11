@@ -180,17 +180,27 @@ strong {
       }
 
       .wp-block-file__button {
-        @include font(subline);
-        text-transform: unset;
         background-color: var(--black);
+        @include font(subline);
         color: var(--white);
+        text-transform: unset;
         line-height: 22px;
-        padding: 0 20px 0 15px;
+        border: 1px solid var(--black);
         border-radius: 30px;
+        padding: 0 20px 0 15px;
 
         &:before {
           content: '\2193';
           margin-right: 5px;
+        }
+
+        &:hover {
+          color: var(--black);
+          background-color: var(--white);
+  
+          &:bfore {
+            color: var(--black);
+          }
         }
       }
     }

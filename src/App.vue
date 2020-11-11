@@ -31,6 +31,8 @@
           </li>
         </ul>
       </Footer>
+
+      <CookieNotice dark/>
     </template>
 
     <template v-else>
@@ -64,6 +66,8 @@
           </li>
         </ul>
       </Footer>
+
+      <CookieNotice />
     </template>
   </div>
 </template>
@@ -72,12 +76,14 @@
 import Navigation from './components/Navigation'
 import Loader from './components/Loader'
 import Footer from './components/Footer'
+import CookieNotice from './components/CookieNotice'
 
 export default {
   components: {
     Navigation,
     Loader,
-    Footer
+    Footer,
+    CookieNotice
   },
   data () {
     return {

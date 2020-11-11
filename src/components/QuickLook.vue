@@ -25,8 +25,12 @@
         </span><br />
       </p>
       <template v-if="event.quick && event.tickets">
-        <Tag v-if="event.quick.includes('vvk_address')" content="Tickets bestellen" :url="event.tickets" />
-        <Tag v-if="event.quick.includes('partypass')" content="Partypass" url="https://www.partypass.de/" />
+        <div v-if="event.quick.includes('vvk_address')" class="quicklook__button">
+          <Tag content="Tickets bestellen" :url="event.tickets" />
+        </div>
+        <div v-if="event.quick.includes('partypass')" class="quicklook__button">
+          <Tag content="Partypass" url="https://www.partypass.de/" />
+        </div>
       </template>
     </div>
   </div>
@@ -76,6 +80,10 @@ export default {
         }
       }
     }
+  }
+
+  &__button {
+    margin-top: 20px;
   }
 }
 </style>

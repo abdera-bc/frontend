@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loading: true,
+    isCookieSet: false,
     events: {
       content: [],
       count: 0,
@@ -38,6 +39,9 @@ export default new Vuex.Store({
     },
     setTotalEvents: function(state, payload) {
       state.events.total = parseInt(payload);
+    },
+    cookieIsSet: function(state) {
+      state.isCookieSet = true;
     },
     isLoading: function(state, payload) {
       state.loading = payload;

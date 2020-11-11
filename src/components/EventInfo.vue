@@ -31,7 +31,7 @@
 import Tag from '../components/Tag'
 
 export default {
-  name: 'ProgramItem',
+  name: 'EventInfo',
   components: {
     Tag
   },

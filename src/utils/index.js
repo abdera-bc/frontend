@@ -1,7 +1,9 @@
 import _ from 'lodash';
+import cookie from 'js-cookie';
 import config from '../config/index';
 import router from '../router';
 import store from '../store';
+
 
 var monthChange = null;
 
@@ -108,6 +110,12 @@ const utils = {
       router.push('/404');
     }
   },
+  setCookie: (name, payload, expires=1) => {
+    cookie.set(name, payload, { expires: expires });
+  },
+  getCookie: (name) => {
+    return cookie.get(name);
+  }
 }
 
 function date(string) {
@@ -152,6 +160,10 @@ export default {
   },
   error: {
     route: utils.errorRouter
+  },
+  cookie: {
+    get: utils.getCookie,
+    set: utils.setCookie
   }
 
 };
