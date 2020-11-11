@@ -11,39 +11,44 @@
     </div>
 
     <div class="program__item--right">
-      <div class="program__item__type text--subline">
-        <div v-for="type in event.types" :key="type[2]"> 
-          <span>{{ type[0] }}</span>
+      <div>
+        <div class="program__item__type text--subline">
+          <div v-for="type in event.types" :key="type[2]"> 
+            <span>{{ type[0] }}</span>
+          </div>
+        </div>
+        
+        <router-link :to="/event/ + event.id"> 
+          <h1 class="program__item__title" v-html="event.title"></h1>
+        </router-link>
+
+        <div class="program__item__info text--subline">
+          <span v-if="event.entry">
+            Ab {{ event.entry }} •
+          </span>
+
+          <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
+            Eintritt frei
+          </span>
+
+          <span v-else-if="event.ak && event.vvk">
+            AK €{{ event.ak }} • VVK €{{ event.vvk }}
+          </span>
+
+          <span v-else>
+            €{{ event.ak }}
+          </span>
         </div>
       </div>
-      
-      <router-link :to="/event/ + event.id"> 
-        <h1 class="program__item__title" v-html="event.title"></h1>
-      </router-link>
 
-      <div class="program__item__info text--subline">
-        <span v-if="event.entry">
-          Ab {{ event.entry }} •
-        </span>
-
-        <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
-          Eintritt frei
-        </span>
-
-        <span v-else-if="event.ak && event.vvk">
-          AK €{{ event.ak }} • VVK €{{ event.vvk }}
-        </span>
-
-        <span v-else>
-          €{{ event.ak }}
-        </span>
+      <div v-if="event.tags" class="program__item__tags">
+        <Tag v-for="tag in event.tags" :key="tag" :content="tag" />
       </div>
 
-      <Tag v-if="event.quick.includes('vvk_address')" content="VVK" :url="event.tickets" />
-      <Tag v-if="event.quick.includes('partypass')" content="Partypass" url="https://www.partypass.de/" />
-      
-      <Tag v-for="tag in event.tags" :key="tag" :content="tag" />
-      
+      <div class="program__item__tags">
+        <Tag v-if="event.quick.includes('vvk_address')" content="VVK" :url="event.tickets" />
+        <Tag v-if="event.quick.includes('partypass')" content="Partypass" url="https://www.partypass.de/" />
+      </div>
     </div>
 
     <div class="program__item__border content"></div>
@@ -108,6 +113,12 @@ export default {
   &--right {
     grid-column-start: 3;
     grid-column-end: 6;
+
+    @include breakpoint('medium') {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__type {
@@ -147,6 +158,22 @@ export default {
   &__border {
     border-bottom: 2px solid var(--black);
     margin-top: 40px;
+  }
+
+  &__tags {
+    display: inline-block;
+    min-width: 130px;
+
+    @include breakpoint('medium') {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    span, a {
+      margin-top: 5px;
+    }
   }
 
   &:last-child {
