@@ -54,10 +54,6 @@ export default {
     if (this.cookie) {
       this.$store.commit('cookieIsSet');
     }
-
-    if (this.cookie === '1') {
-      this.$ga.enable();
-    }
   }
 }
 </script>

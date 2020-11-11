@@ -32,7 +32,7 @@
         </ul>
       </Footer>
 
-      <CookieNotice dark/>
+      <CookieNotice />
     </template>
 
     <template v-else>
@@ -73,6 +73,7 @@
 </template>
 
 <script>
+import utils from './utils/index'
 import Navigation from './components/Navigation'
 import Loader from './components/Loader'
 import Footer from './components/Footer'
@@ -110,6 +111,10 @@ export default {
   watch: {
     $route() {
       this.isDark = this.$router.currentRoute.path.includes('/vermietung');
+
+      if (utils.cookie.get('cookie-acceptance') === '1') {
+        this.$ga.enable();
+      }
     }
   }
 }
