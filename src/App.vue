@@ -90,15 +90,24 @@ export default {
     return {
       pages: null,
       routes: [],
-      isDark: undefined
+      isDark: undefined,
+      cookie: null
     }
   },
   methods: {
     isLoading: function () {
       return this.$store.state.loading;
+    },
+    tracking() {
+      this.cookie = utils.cookie.get('cookie-acceptance');
+      if (this.cookie === '1') {
+        this.$ga.page(this.$route.path);
+      }
     }
   },
   created() {
+    this.cookie = utils.cookie.get('cookie-acceptance');
+
     this.$router.options.routes.forEach(route => {
       if (route.name) { 
         this.routes.push({
@@ -107,14 +116,16 @@ export default {
         });
       } 
     });
+
+    if (this.cookie === '1') {
+      this.$ga.enable();
+      this.tracking();
+    }
   },
   watch: {
     $route() {
       this.isDark = this.$router.currentRoute.path.includes('/vermietung');
-
-      if (utils.cookie.get('cookie-acceptance') === '1') {
-        this.$ga.enable();
-      }
+      this.tracking();
     }
   }
 }

@@ -139,6 +139,10 @@ export default {
   &__title {
     color: var(--black);
     margin: 10px 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__info {
