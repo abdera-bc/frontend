@@ -3,21 +3,33 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('mysite-data').then(function(cache) {
       return cache.addAll(
-        ['/index.html']
+        [
+          'index.html'
+        ]
       );
     })
   );
 });
 
+self.addEventListener('activate', function () {
+  self.clients.claim()
+  console.log('Control claimed');
+});
+
 self.addEventListener('fetch', function(event) {
+  console.log('Fetched.');
   event.respondWith(
     caches.open('mysite-dynamic').then(function(cache) {
-      return cache.match(event.request).then(function (response) {
-        return response || fetch(event.request).then(function(response) {
+      return fetch(event.request)
+        .then(function(response) {
           cache.put(event.request, response.clone());
           return response;
-        });
-      });
+        })
+        .catch(function() {
+            return cache.match(event.request)
+              ? caches.match(event.request)
+              : caches.match('/index.html');
+        })
     })
   );
 });

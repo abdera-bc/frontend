@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Tag from '../components/Tag'
-import utils from '../utils/index'
+import Tag from '@/components/Tag'
+import utils from '@/utils/index'
 
 export default {
   name: 'CookieNotice',

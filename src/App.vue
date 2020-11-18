@@ -74,10 +74,10 @@
 
 <script>
 import utils from './utils/index'
-import Navigation from './components/Navigation'
-import Loader from './components/Loader'
-import Footer from './components/Footer'
-import CookieNotice from './components/CookieNotice'
+import Navigation from './components/main/Navigation'
+import Loader from './components/main/Loader'
+import Footer from './components/main/Footer'
+import CookieNotice from './components/main/CookieNotice'
 
 export default {
   components: {
@@ -100,6 +100,7 @@ export default {
     },
     tracking() {
       this.cookie = utils.cookie.get('cookie-acceptance');
+
       if (this.cookie === '1') {
         this.$ga.page(this.$route.path);
       }
@@ -120,6 +121,13 @@ export default {
     if (this.cookie === '1') {
       this.$ga.enable();
       this.tracking();
+    }
+
+    const isInStandaloneMode = () =>
+      (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
+
+    if (isInStandaloneMode()) {
+        console.log("webapp is installed")
     }
   },
   watch: {
@@ -145,7 +153,7 @@ export default {
   max-width: 1280px;
   margin: 0 auto;
   min-height: calc(100vh - 50px);
-  overflow-x: hidden;
+  overflow: hidden;
   box-shadow: 0 5px 100px 0px #f3f3f3;
   background-color: var(--white);
   z-index: -1;

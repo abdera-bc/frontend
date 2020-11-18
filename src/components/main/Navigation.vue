@@ -94,7 +94,7 @@ export default {
     
     &::before {
       content: '';
-      background: url('../assets/symbols/logo.svg') no-repeat;
+      background: url('../../assets/symbols/logo.svg') no-repeat;
       background-position: center;
       background-size: contain;
       display: block;
@@ -119,7 +119,7 @@ export default {
     
     &::after {
       content: '';
-      background: url('../assets/symbols/hamburger.svg') center 2px no-repeat;
+      background: url('../../assets/symbols/hamburger.svg') center 2px no-repeat;
       display: block;
       align-self: center;
       width: 18px;
@@ -130,7 +130,7 @@ export default {
   .navigation__main__hamburger--open {
     &::after {
       content: '';
-      background: url('../assets/symbols/close.svg') center 2px no-repeat;
+      background: url('../../assets/symbols/close.svg') center 2px no-repeat;
       display: block;
       align-self: center;
       width: 18px;
@@ -258,13 +258,13 @@ export default {
 
       &__hamburger {
         &::after {
-          background: url('../assets/symbols/hamburger-white.svg') center 2px no-repeat !important;
+          background: url('../../assets/symbols/hamburger-white.svg') center 2px no-repeat !important;
         }
       }
 
       &__hamburger--open {
         &::after {
-          background: url('../assets/symbols/close-white.svg') center 2px no-repeat !important;
+          background: url('../../assets/symbols/close-white.svg') center 2px no-repeat !important;
         }
       }
 

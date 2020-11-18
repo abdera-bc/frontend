@@ -57,6 +57,13 @@
     }
   }
 
+  &-left-border {
+    @include breakpoint('medium') {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+  }
+
   &-right-border {
     @include breakpoint('medium') {
       grid-column-start: 4;

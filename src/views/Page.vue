@@ -65,15 +65,19 @@ export default {
 
   &__title {
     position: relative;
+    top: -50%;
 
     &__headline {
       display: inline-block;
       padding: 12px;
       background-color: var(--white);
-      margin-top: -50px;
       
       h1 {
         line-height: 1.5rem;
+
+        @include breakpoint('medium') {
+          @include font('title');
+        }
       }
 
       &::before {
@@ -91,6 +95,15 @@ export default {
 
       h1 {
         line-height: 1.5rem;
+
+        @include breakpoint('medium') {
+          @include font('title');
+        }
+      }
+
+      @include breakpoint('medium') {
+        right: 60px;
+        margin-top: -150px;
       }
 
       &::before {

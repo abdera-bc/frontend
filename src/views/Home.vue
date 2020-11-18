@@ -31,6 +31,13 @@
           />
         </div>
       </div>
+
+      <Important 
+        v-if="page.important.exists" 
+        :title="page.important.title"
+        :content="page.important.content"
+        :image="page.important.image"
+      />
     </div>
       
     <Overview show="3" />
@@ -46,19 +53,22 @@
     </div>
     <div class="home__wrapper base-grid">
       <div class="home__help full base-grid">
-        <div class="home__help__image full"></div>
+        <div class="home__help__image full">
+          <img src="../assets/images/abdera-helfen.jpg" alt="">
+        </div>
         <div class="home__help__wrapper content medium-right">
-          <h1 class="frame-br">Freibier?!</h1>
+          <div class="home__help__title">
+            <h1 class="frame-br">Mach mit ...</h1>
+          </div>
           <div class="home__help__content">
             <p class="frame-bl">
-              <strong>... gibts bei uns nur hinter der Theke (und Kasse).</strong><br />
+              <strong>... werde Helfer!</strong><br />
               Wir suchen immer fleißige Freiwillige, die mit uns den Laden schmeißen!<br />
                 <span class="home__help__button">
                   <Tag 
                       class="home__help__link" 
                       content="Helfer werden" 
                       url="/mitmachen" 
-                      dark
                     />
                 </span>
             </p>
@@ -71,10 +81,12 @@
 
 <script>
 import utils from '@/utils/index'
-import Overview from '@/components/Overview'
-import Tag from '@/components/Tag'
-import Blackboard from '@/components/Blackboard'
 import SocialLink from '@/components/SocialLink'
+import Tag from '@/components/Tag'
+
+import Overview from '@/components/home/Overview'
+import Blackboard from '@/components/home/Blackboard'
+import Important from '@/components/home/Important'
 
 export default {
   name: 'Home',
@@ -82,6 +94,7 @@ export default {
     Overview,
     Tag,
     Blackboard,
+    Important,
     SocialLink
   },
   data() {
@@ -138,6 +151,12 @@ export default {
           background-color: var(--white);
           text-decoration: none;
 
+          @include breakpoint('medium') {
+            @include font('title');
+            margin-top: -150px;
+            left: 250px;
+          }
+
           &::before {
             background-color: var(--white);
           }
@@ -147,6 +166,10 @@ export default {
           padding: 12px;
           display: inline-block;
           background-color: var(--white);
+
+          @include breakpoint('medium') {
+            @include font('title');
+          }
 
           &::before {
             background-color: var(--white);
@@ -178,17 +201,27 @@ export default {
 
     &__help {
       background-color: var(--black);
-      z-index: -1;
 
       &__image {
-        height: 500px;
-        background: url(../assets/images/abdera-helfen.jpg) no-repeat;
-        background-size: cover;
-        background-position: right;
-        z-index: -1;
+        height: 650px;
+        overflow: hidden;
+        z-index: 1;
 
         @include breakpoint('medium') {
           height: 860px;
+        }
+
+        img {
+          position: relative;
+          object-fit: cover;
+          vertical-align: middle;
+          left: 80%;
+          transform: translateX(-80%);
+          z-index: -1;
+
+          @include breakpoint('medium') {
+            width: 100%;
+          }
         }
       }
 
@@ -197,7 +230,8 @@ export default {
           position: absolute;
           display: inline-block;
           padding: 12px 20px;
-          transform: translateY(-450px);
+          transform: translateY(-550px);
+          z-index: 1;
           
           @include breakpoint('medium') {
             transform: translate(-50%, -400px);
@@ -210,8 +244,10 @@ export default {
       }
 
       &__content {
+        position: relative;
         margin-top: -150px;
         padding: 0 var(--contentSpacingWidth);
+        z-index: 30;
 
         @include breakpoint('medium') {
           margin-top: -300px;

@@ -75,12 +75,17 @@ export default {
   position: relative;
   background-color: var(--black);
   padding: var(--containerSpacingHeight) 0;
+  margin-top: -2px;
 
   &__container {
     display: flex;
     flex-direction: row;
     max-width: 1280px;
     padding: var(--contentSpacingWidth);
+
+    @include breakpoint('medium') {
+      padding: var(--contentSpacingWidth) 0;
+    }
 
     &__column {
       display: flex;
@@ -169,27 +174,34 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: flex-end;
       padding: 0;
-      margin: 0;
+      margin: 0 0 30px 0;
 
       li {
+        position: relative;
         list-style: none;
         display: inline-block;
-        padding-bottom: 15px;
-        transition: all .15s ease-in;
-        text-align: right;
-        
+
         a {
           display: inline-block;
           @include font(headline);
           text-transform: uppercase;
           font-size: 14px;
           letter-spacing: 0.2rem;
+          line-height: 22px;
           color: var(--white);
+          padding: 10px 0;
+
+          &:hover {
+            text-decoration: underline;
+          }
         }
 
-        &:hover {
-          text-decoration: underline;
+        &:first-child {
+            a {
+              padding-top: 0px;
+            }
         }
       }
     }

@@ -98,8 +98,10 @@ const utils = {
         image: _.get(data, 'acf.page_image'),
         blackboard: _.get(data, 'acf.home_blackboard'),
         important: {
+          exists: _.get(data, 'acf.home_is_important'),
           title: _.get(data, 'acf.home_important.home_important_title'),
-          content: _.get(data, 'acf.home_important.home_important_content')
+          content: _.get(data, 'acf.home_important.home_important_content'),
+          image: _.get(data, 'acf.home_important.home_important_image'),
         },
         content: _.get(data, 'content.rendered')
       }

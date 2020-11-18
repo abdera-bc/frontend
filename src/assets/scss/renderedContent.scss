@@ -254,9 +254,9 @@ strong {
     }
   }
 
-  ul {
+  ul, ol {
     position: relative;
-    padding: 0 0 20px 40px;
+    padding: 0 20px 20px 40px;
     margin: var(--containerSpacingHeight) var(--textSpacingWidth);
     border: 2px solid var(--black);
     background-color: var(--white);
@@ -272,7 +272,9 @@ strong {
       border: 2px solid var(--black);
       z-index: -1;
     }
+  }
 
+  ul {
     li {
       &::marker {
         content: '\2192' + '  ';
