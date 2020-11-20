@@ -3,8 +3,11 @@ set -e
 # build
 npm run build
 
-# copy netlify configurations file
-cp netlify.toml dist/netlify.toml
+# copy gh actions workflow & .htaccess
+mkdir dist/.github
+mkdir dist/.github/workflows
+cp .github/workflows/main.yml dist/.github/workflows/main.yml
+
 cp .htaccess dist/.htaccess
 
 # navigate into the build output directory
