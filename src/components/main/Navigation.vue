@@ -76,7 +76,7 @@ export default {
   position: sticky;
   top: 0;
   left: 0;
-  background-color: var(--white);
+  background-color: #f00;
   z-index: 100;
   -webkit-backface-visibility: hidden;
   border-bottom: 2px solid var(--black);
