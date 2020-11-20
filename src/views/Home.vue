@@ -2,7 +2,7 @@
   <div v-if="page" class="home">
     <div class="home__wrapper base-grid">
       <div class="home__image full">
-        <img :src="page.image" alt="">
+        <img width="1280" height="768" :src="page.image" alt="Willkommen im Abdera">
       </div>
 
       <div class="home__title full base-grid">
@@ -54,11 +54,11 @@
     <div class="home__wrapper base-grid">
       <div class="home__help full base-grid">
         <div class="home__help__image full">
-          <img src="../assets/images/abdera-helfen.jpg" alt="">
+          <img width="1280" height="768" src="../assets/images/abdera-helfen.jpg" alt="Helfen im Abdera">
         </div>
         <div class="home__help__wrapper content medium-right">
           <div class="home__help__title">
-            <h1 class="frame-br">Mach mit ...</h1>
+            <Headline title="Mach mit ..." frame="br"/>
           </div>
           <div class="home__help__content">
             <p class="frame-bl">
@@ -87,6 +87,7 @@ import Tag from '@/components/Tag'
 import Overview from '@/components/home/Overview'
 import Blackboard from '@/components/home/Blackboard'
 import Important from '@/components/home/Important'
+import Headline from '@/components/general/Headline'
 
 export default {
   name: 'Home',
@@ -95,6 +96,7 @@ export default {
     Tag,
     Blackboard,
     Important,
+    Headline,
     SocialLink
   },
   data() {
@@ -202,11 +204,12 @@ export default {
 
     &__help {
       background-color: var(--black);
+      z-index: 1;
 
       &__image {
         height: 650px;
         overflow: hidden;
-        z-index: 1;
+        z-index: -1;
 
         @include breakpoint('medium') {
           height: 860px;
@@ -215,6 +218,8 @@ export default {
         img {
           position: relative;
           object-fit: cover;
+          height: 100%;
+          width: 100%;
           vertical-align: middle;
           left: 80%;
           transform: translateX(-80%);
@@ -226,21 +231,12 @@ export default {
         }
       }
 
-      &__wrapper {
-        h1 {
-          position: absolute;
-          display: inline-block;
-          padding: 12px 20px;
-          transform: translateY(-550px);
-          z-index: 1;
-          
-          @include breakpoint('medium') {
-            transform: translate(-50%, -400px);
-          }
-
-          &::before {
-            background-color: var(--white);
-          }
+      &__title {
+        position: absolute;
+        transform: translateY(-550px);
+        
+        @include breakpoint('medium') {
+          transform: translate(-50%, -400px);
         }
       }
 

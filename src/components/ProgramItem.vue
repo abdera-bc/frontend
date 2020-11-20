@@ -1,44 +1,46 @@
 <template>
   <div class="program__item base-grid">
+    <router-link :to="/event/ + event.id" class="program__item__link content"></router-link>
 
     <div v-if="event.image" class="program__item__image content">
-      <router-link :to="/event/ + event.id"><img :src="event.image" :alt="'Bald im Abdera Biberach: ' + event.title" /></router-link>
+      <img :src="event.image" :alt="'Bald im Abdera Biberach: ' + event.title" />
     </div>
 
     <div class="program__item--left">
-      <ProgramItemDate v-if="overview" :weekday="event.date.weekday" :day="event.date.day" :month="event.date.month" />
-      <ProgramItemDate v-else :weekday="event.date.weekday" :day="event.date.day" />
+        <ProgramItemDate v-if="overview" :weekday="event.date.weekday" :day="event.date.day" :month="event.date.month" />
+        <ProgramItemDate v-else :weekday="event.date.weekday" :day="event.date.day" />
     </div>
 
     <div class="program__item--right">
-      <div>
-        <div class="program__item__type text--subline">
-          <div v-for="type in event.types" :key="type[2]"> 
-            <span>{{ type[0] }}</span>
+
+        <div>
+          <div class="program__item__type text--subline">
+            <div v-for="type in event.types" :key="type[2]"> 
+              <span>{{ type[0] }}</span>
+            </div>
           </div>
-        </div>
-        
-        <router-link :to="/event/ + event.id"> 
-          <h1 class="program__item__title" v-html="event.title"></h1>
-        </router-link>
+          
+          <router-link :to="/event/ + event.id"> 
+            <h1 class="program__item__title" v-html="event.title"></h1>
+          </router-link>
 
-        <div class="program__item__info text--subline">
-          <span v-if="event.entry">
-            Ab {{ event.entry }} •
-          </span>
+          <div class="program__item__info text--subline">
+            <span v-if="event.entry">
+              Ab {{ event.entry }} •
+            </span>
 
-          <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
-            Eintritt frei
-          </span>
+            <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
+              Eintritt frei
+            </span>
 
-          <span v-else-if="event.ak && event.vvk">
-            AK €{{ event.ak }} • VVK €{{ event.vvk }}
-          </span>
+            <span v-else-if="event.ak && event.vvk">
+              AK €{{ event.ak }} • VVK €{{ event.vvk }}
+            </span>
 
-          <span v-else>
-            €{{ event.ak }}
-          </span>
-        </div>
+            <span v-else>
+              €{{ event.ak }}
+            </span>
+          </div>
       </div>
 
       <div v-if="event.tags" class="program__item__tags">
@@ -52,6 +54,7 @@
     </div>
 
     <div class="program__item__border content"></div>
+
   </div>
 </template>
 
@@ -74,16 +77,20 @@ export default {
 
 <style lang="scss">
 .program__item {
-  margin-top: 40px;
+  position: relative;
+  padding-top: 40px;
 
   &--left {
     grid-column-start: 2;
     grid-column-end: 3;
+    z-index: 1;
   }
   
   &--right {
     grid-column-start: 3;
     grid-column-end: 6;
+    pointer-events: none;
+    z-index: 1;
 
     @include breakpoint('medium') {
       display: flex;
@@ -108,11 +115,18 @@ export default {
   }
 
   &__title {
+    position: relative;
     color: var(--black);
     margin: 10px 0;
+  }
 
-    &:hover {
-      text-decoration: underline;
+  &__link {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    &:hover ~div .programm__item__date__container:before {
+      background-color: var(--black);
     }
   }
 
@@ -123,6 +137,7 @@ export default {
   &__image {
     position: relative;
     margin-bottom: 20px;
+    pointer-events: none;
     
     img {
       vertical-align: middle;
@@ -144,6 +159,10 @@ export default {
       flex-direction: column;
       justify-content: flex-end;
       align-items: flex-end;
+    }
+
+    a {
+      pointer-events: all;
     }
 
     span, a {

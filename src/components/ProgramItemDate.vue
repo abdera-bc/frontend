@@ -30,6 +30,10 @@ export default {
   margin-top: -7px;
   background-color: var(--white);
 
+  &:before {
+    transition: all .15s ease-in;
+  }
+
   span {
     position: relative;
     display: inline-block;

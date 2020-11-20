@@ -11,6 +11,11 @@
 
 html {
   height: -webkit-fill-available;
+  scrollbar-width: none; // Hide scrollbar in Firefox
+}
+
+::-webkit-scrollbar {
+  width: 0px; // Hide scrollbar in Chromium
 }
 
 body {
@@ -20,10 +25,6 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   z-index: -1;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
 }
 
 a {
