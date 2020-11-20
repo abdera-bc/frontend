@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import cookie from 'js-cookie';
+import jsCookie from 'js-cookie';
 import config from '../config/index';
 import router from '../router';
 import store from '../store';
@@ -112,11 +112,38 @@ const utils = {
       router.push('/404');
     }
   },
+  translateWeekday: (value) => {
+    return {
+      Mon: 'Mo',
+      Tue: 'Di',
+      Wed: 'Mi',
+      Thu: 'Do',
+      Fri: 'Fr',
+      Sat: 'Sa',
+      Sun: 'So'
+    }[value]
+  },
+  translateMonth: (value) => {
+    return {
+      Jan: 'Jan',
+      Feb: 'Feb',
+      Mar: 'März',
+      Apr: 'Apr',
+      May: 'Mai',
+      Jun: 'Jun',
+      Jul: 'Jul',
+      Aug: 'Aug',
+      Sept: 'Sept',
+      Oct: 'Okt',
+      Nov: 'Nov',
+      Dec: 'Dez',
+    }[value]
+  },
   setCookie: (name, payload, expires=1) => {
-    cookie.set(name, payload, { expires: expires });
+    jsCookie.set(name, payload, { expires: expires });
   },
   getCookie: (name) => {
-    return cookie.get(name);
+    return jsCookie.get(name);
   }
 }
 
@@ -140,16 +167,16 @@ function date(string) {
   }
 
   return {
-    full: full,
-    weekday: weekday,
+    full: {
+      en: full
+    },
+    weekday: utils.translateWeekday(weekday),
     day: day,
-    month: month,
+    month: utils.translateMonth(month),
     year: year,
     change: change
   };
 }
-
-
 
 export default {
   get: {
@@ -166,6 +193,33 @@ export default {
   cookie: {
     get: utils.getCookie,
     set: utils.setCookie
+  },
+  translate: {
+    weekday: utils.translateWeekday,
+    month: utils.translateMonth
   }
+};
 
+export const get = {
+  content: utils.getContent,
+};
+
+export const error = {
+  route: utils.errorRouter
+};
+
+export const cookie = {
+  get: utils.getCookie,
+  set: utils.setCookie
+};
+
+export const map = {
+  events: utils.eventMapper,
+  page: utils.pageMapper,
+  home: utils.homeMapper
+};
+
+export const translate = {
+  weekday: utils.translateWeekday,
+  month: utils.translateMonth
 };

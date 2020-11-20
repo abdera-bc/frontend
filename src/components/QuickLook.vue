@@ -4,7 +4,12 @@
     <div class="quicklook__container frame-br">
       <p>
         <span v-if="event.date">
-          <strong>Datum</strong> <span>{{event.date.full}}</span>
+          <strong>Datum</strong> <span>
+            {{ event.date.weekday }}, 
+            {{ event.date.day }}. 
+            {{ event.date.month }} 
+            {{ event.date.year }} 
+            </span>
         </span><br />
         <span v-if="event.entry">
           <strong>Einlass</strong> <span>{{event.entry}}</span>

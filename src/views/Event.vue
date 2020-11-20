@@ -3,7 +3,7 @@
     <template v-if="event">
       <div class="event__title content">
         <p class="event__title__date">
-          {{ event.date.weekday }}, 
+          {{ event.date.weekday }} 
           {{ event.date.day }}. 
           {{ event.date.month }} 
           {{ event.date.year }}</p>

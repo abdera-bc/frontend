@@ -35,12 +35,6 @@ export default {
 
 <style scoped lang="scss">
 .important {
-  background-color: var(--black);
-
-  @include breakpoint('medium') {
-    background-color: transparent;
-  }
-
   &__image {
     position: relative;
     z-index: 1;
@@ -56,7 +50,6 @@ export default {
 
   &__wrapper {
     position: relative;
-    padding-bottom: var(--containerSpacingHeight);
     margin-top: -50%;
     z-index: 1;
 

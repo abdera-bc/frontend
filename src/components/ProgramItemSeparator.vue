@@ -13,7 +13,6 @@ export default {
     month: String,
     year: String
   }
-
 }
 </script>
 

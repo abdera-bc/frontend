@@ -126,6 +126,7 @@ export default {
     &__image {
       min-height: 50px;
       height: calc(100vh - 200px);
+      width: auto;
       z-index: -1;
 
       img {
