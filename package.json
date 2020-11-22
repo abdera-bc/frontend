@@ -6,8 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "deploy:live": "./live.sh",
-    "deploy:stage": "./stage.sh",
-    "lint": "vue-cli-service lint"
+    "deploy:stage": "./stage.sh"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -34,20 +33,6 @@
     "sass-loader": "^8.0.2",
     "spa-http-server": "^0.9.0",
     "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",
