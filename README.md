@@ -57,3 +57,7 @@ In short, when you submit code changes, your submissions are understood to be un
 ### References
 
 This document was adapted from the open-source contribution guidelines for [Facebook's Draft](https://github.com/facebook/draft-js/blob/a9316a723f9e918afde44dea68b5f9f39b7d9b00/CONTRIBUTING.md)
+
+## License
+
+[MIT License](/LICENSE)
