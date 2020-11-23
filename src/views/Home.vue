@@ -244,7 +244,7 @@ export default {
         position: relative;
         margin-top: -150px;
         padding: 0 var(--contentSpacingWidth);
-        z-index: 30;
+        z-index: 50;
 
         @include breakpoint('medium') {
           margin-top: -300px;
