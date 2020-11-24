@@ -32,7 +32,7 @@ export default {
   .tag {
     display: inline-block;
     padding: 0 20px;
-    margin-right: 10px;
+    margin: 12px 10px 12px 0;
     border-radius: 30px;
     border: 1px solid var(--black);
     @include font(subline);

@@ -16,5 +16,10 @@ module.exports = {
         prependData: `@import "@/assets/scss/globals/";`
       },
     }
+  },
+  configureWebpack: {
+    output: {
+        crossOriginLoading: 'anonymous'
+    }
   }
 };

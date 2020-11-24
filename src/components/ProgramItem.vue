@@ -165,10 +165,6 @@ export default {
     a {
       pointer-events: all;
     }
-
-    span, a {
-      margin-top: 5px;
-    }
   }
 
   &:last-child {

@@ -151,7 +151,6 @@ export default {
 
     * {
       align-self: flex-start;
-      margin: 0;
 
       &:not(:last-child) {
         margin-bottom: 5px;
