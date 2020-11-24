@@ -2,12 +2,14 @@
 // Work Sans (Google Font)
 @font-face {
   font-family: 'WorkSansRegular';
-  src: url('~@/assets/fonts/work-sans/WorkSans-Regular.ttf') format('truetype'); 
+  src: url('~@/assets/fonts/work-sans/WorkSans-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'WorkSansSemiBold';
   src: url('~@/assets/fonts/work-sans/WorkSans-SemiBold.ttf') format('truetype'); 
+  font-display: swap;
 }
 
 @mixin font($selector) {
