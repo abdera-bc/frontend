@@ -7,13 +7,7 @@
 </ifModule>
 
 <ifModule mod_headers.c> 
-    <filesMatch "\.(gif|jpg|jpeg|png)$">
-        Header set Cache-Control "max-age=86400, public"
-    </filesMatch>
-    <filesMatch "\.(svg)$">
-        Header set Cache-Control "max-age=2592000, public"
-    </filesMatch>
-    <filesMatch "\.(css|js|ttf)$">
+    <filesMatch "\.(gif|jpg|jpeg|png|jpf|svg|css|js|ttf)$">
         Header set Cache-Control "max-age=31536000, public"
     </filesMatch>
 </ifModule>

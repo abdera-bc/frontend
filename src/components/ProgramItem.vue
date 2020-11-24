@@ -1,6 +1,6 @@
 <template>
   <div class="program__item base-grid">
-    <router-link :to="/event/ + event.id" class="program__item__link content"></router-link>
+    <router-link :to="/event/ + event.id" class="program__item__link content" :aria-label="'Bald im Abdera Biberach:' + event.title"></router-link>
 
     <div v-if="event.image" class="program__item__image content">
       <img :src="event.image" :alt="'Bald im Abdera Biberach: ' + event.title" width="900" height="450" />

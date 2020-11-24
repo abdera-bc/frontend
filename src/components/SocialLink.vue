@@ -1,7 +1,7 @@
 <template>
   <div class="social-link" :class="{'social-link--small': small}">
     <div v-if="type === 'facebook'" class="social-link__facebook" :class="{'social-link--dark': dark, 'social-link--light': light}">
-      <a :href="this.facebook" rel="noreferrer" target="_blank">
+      <a :href="this.facebook" rel="noreferrer" target="_blank" aria-label="Abdera Biberach Facebook">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
         <path class="st0" d="M299.3,150.3c0-82.6-66.9-149.5-149.5-149.5S0.3,67.7,0.3,150.3C0.3,224.9,55,286.8,126.5,298V193.5h-38v-43.2
@@ -11,7 +11,7 @@
       </a>
     </div>
     <div v-if="type === 'instagram'" class="social-link__instagram" :class="{'social-link--dark': dark, 'social-link--light': light}">
-      <a :href="this.instagram" rel="noreferrer" target="_blank">
+      <a :href="this.instagram" rel="noreferrer" target="_blank" aria-label="Abdera Biberach Instagram">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
         <g>
@@ -37,7 +37,7 @@
       </a>
     </div>
     <div v-if="type === 'youtube'" class="social-link__youtube" :class="{'social-link--dark': dark, 'social-link--light': light}">
-      <a :href="this.youtube" rel="noreferrer" target="_blank">
+      <a :href="this.youtube" rel="noreferrer" target="_blank" aria-label="Abdera Biberach Youtube">
         <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
           viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
         <g>
