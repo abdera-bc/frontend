@@ -1,8 +1,7 @@
 const FALLBACK_CACHE = 'abdera-offline';
 const FALLBACK_URL = '/index.html';
 
-self.addEventListener('install', async function(event) {
-  console.log('Service worker installed.')
+self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('abdera-data').then(function(cache) {
       return cache.addAll(
@@ -12,14 +11,18 @@ self.addEventListener('install', async function(event) {
       );
     })
   );
+
   event.waitUntil(
     caches.open(FALLBACK_CACHE)
       .then((cache) => cache.add(FALLBACK_URL))
   );
+
+  console.log('Service worker installed.')
 });
 
 self.addEventListener('activate', function () {
   self.clients.claim()
+
   console.log('Control claimed');
 });
 
@@ -32,9 +35,11 @@ self.addEventListener('fetch', function(event) {
           return response;
         })
         .catch(function() {
+            console.log('The site is served from offline cache.')
+
             return caches.match(FALLBACK_URL, {
-                cacheName: FALLBACK_CACHE
-              });
+              cacheName: FALLBACK_CACHE
+            });
         })
     })
   );

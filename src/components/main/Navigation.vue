@@ -116,6 +116,7 @@ export default {
     height: 100%;
     width: $mainMenuHeight;
     text-align: center;
+    cursor: pointer;
     
     &::after {
       content: '';

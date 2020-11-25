@@ -135,6 +135,7 @@ export default {
         height: calc(100vh - 200px);
         width: 100%;
         object-fit: cover;
+        background-color: var(--black);
       }
     }
 
