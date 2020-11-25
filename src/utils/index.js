@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { get as loget } from 'lodash';
 import jsCookie from 'js-cookie';
 import config from '../config/index';
 import router from '../router';
@@ -55,24 +55,24 @@ const utils = {
       return data.map(event => {
         return { 
           id: event.id || '',
-          title: _.get(event, 'title.rendered'), 
-          content: _.get(event, 'content.rendered'),
+          title: loget(event, 'title.rendered'), 
+          content: loget(event, 'content.rendered'),
           types: event.cats ? event.cats.map((cat) => [cat.name, cat.slug, cat.cat_ID]) : '',
           tags: event.custom_tags ? event.custom_tags.map((tag) => tag.name) : '',
-          date: date(_.get(event, 'acf.event_date')),
-          entry: _.get(event, 'acf.event_entry'),
-          start: _.get(event, 'acf.event_start'),
-          end: _.get(event, 'acf.event_end'),
-          location: _.get(event, 'acf.event_common_information.event_location'),
-          organizer: _.get(event, 'acf.event_common_information.event_organizer'),
-          presenter: _.get(event, 'acf.event_common_information.event_presenter'),
-          spotify: _.get(event, 'acf.event_common_information.event_spotify'),
-          website: _.get(event, 'acf.event_common_information.event_website'),
-          image: _.get(event, 'acf.event_common_information.event_image'),
-          vvk: _.get(event, 'acf.event_sale_information.event_pre_sale'),
-          ak: _.get(event, 'acf.event_sale_information.event_box_office'),
-          tickets: _.get(event, 'acf.event_sale_information.event_ticket_link'),
-          quick: _.get(event, 'acf.event_quick_information'),
+          date: date(loget(event, 'acf.event_date')),
+          entry: loget(event, 'acf.event_entry'),
+          start: loget(event, 'acf.event_start'),
+          end: loget(event, 'acf.event_end'),
+          location: loget(event, 'acf.event_common_information.event_location'),
+          organizer: loget(event, 'acf.event_common_information.event_organizer'),
+          presenter: loget(event, 'acf.event_common_information.event_presenter'),
+          spotify: loget(event, 'acf.event_common_information.event_spotify'),
+          website: loget(event, 'acf.event_common_information.event_website'),
+          image: loget(event, 'acf.event_common_information.event_image'),
+          vvk: loget(event, 'acf.event_sale_information.event_pre_sale'),
+          ak: loget(event, 'acf.event_sale_information.event_box_office'),
+          tickets: loget(event, 'acf.event_sale_information.event_ticket_link'),
+          quick: loget(event, 'acf.event_quick_information'),
         }
       });
     }
@@ -81,11 +81,11 @@ const utils = {
     if (data) {
       return { 
         id: data.id || '',
-        title: _.get(data, 'acf.page_title'),
-        subtitle: _.get(data, 'acf.page_subtitle'),
-        image: _.get(data, 'acf.page_image'),
-        wp_title: _.get(data, 'title.rendered'),
-        content: _.get(data, 'content.rendered')
+        title: loget(data, 'acf.page_title'),
+        subtitle: loget(data, 'acf.page_subtitle'),
+        image: loget(data, 'acf.page_image'),
+        wp_title: loget(data, 'title.rendered'),
+        content: loget(data, 'content.rendered')
       }
     }
   },
@@ -93,17 +93,17 @@ const utils = {
     if (data) {
       return { 
         id: data.id || '',
-        title: _.get(data, 'acf.page_title'),
-        subtitle: _.get(data, 'acf.page_subtitle'),
-        image: _.get(data, 'acf.page_image'),
-        blackboard: _.get(data, 'acf.home_blackboard'),
+        title: loget(data, 'acf.page_title'),
+        subtitle: loget(data, 'acf.page_subtitle'),
+        image: loget(data, 'acf.page_image'),
+        blackboard: loget(data, 'acf.home_blackboard'),
         important: {
-          exists: _.get(data, 'acf.home_is_important'),
-          title: _.get(data, 'acf.home_important.home_important_title'),
-          content: _.get(data, 'acf.home_important.home_important_content'),
-          image: _.get(data, 'acf.home_important.home_important_image'),
+          exists: loget(data, 'acf.home_is_important'),
+          title: loget(data, 'acf.home_important.home_important_title'),
+          content: loget(data, 'acf.home_important.home_important_content'),
+          image: loget(data, 'acf.home_important.home_important_image'),
         },
-        content: _.get(data, 'content.rendered')
+        content: loget(data, 'content.rendered')
       }
     }
   },
