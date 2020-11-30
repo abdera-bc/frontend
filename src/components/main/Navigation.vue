@@ -2,10 +2,11 @@
   <div class="navigation" :class="{'navigation--dark' : dark}">
     <div class="navigation__main--grid base-grid">
       <div class="navigation__main content large-full">
-        <div class="logo__wrapper">
+        <div class="navigation__main__logo--wrapper">
           <router-link to="/">
-            
-            <div class="navigation__main__logo">ABDERA</div>
+            <div class="navigation__main__logo">
+              <img src="@/assets/images/abdera-logo.svg" alt="Kulturhalle Abdera Biberach – Logo">
+            </div>
           </router-link>
         </div>
         <div 
@@ -82,27 +83,18 @@ export default {
   border-bottom: 2px solid var(--black);
 
   .navigation__main__logo {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
     height: 100%;
-    @include font(headline);
-    text-align: center;
-    font-size: 14px;
-    letter-spacing: 0.2rem;
-    line-height: $mainMenuHeight;
-    color: var(--black);
-    
-    &::before {
-      content: '';
-      background: url('../../assets/symbols/logo.svg') no-repeat;
-      background-position: center;
-      background-size: contain;
-      display: block;
-      align-self: center;
-      width: 32px;
-      height: 32px;
-      margin-right: 15px;
-      border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 13px 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      object-position: 0 0;
+      vertical-align: middle;
     }
 
     @include breakpoint('large') {
@@ -252,7 +244,7 @@ export default {
     .navigation__main {
       
       &__logo {
-        &:before {
+        img {
           filter: invert(100%);
         }
       }

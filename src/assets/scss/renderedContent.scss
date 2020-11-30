@@ -23,6 +23,7 @@ strong {
 
 .rendered-content {
 
+  // Style for inverted modules
   &--onBlack {
     --black: #ffffff;
     --white: #000000;
@@ -300,12 +301,23 @@ strong {
       margin: var(--textSpacingHeight) 0;
     }
   }
-  
 }
 
 .not-indented {
   *, p {
     padding-left: 0;
     padding-right: 0;
+  }
+}
+
+// Style for dark layout
+.main__dark .rendered-content {
+  .custom-file-block .wp-block-file:before {
+    filter: invert(100%);
+  }
+  
+  .custom-image-block {
+    --black: #000000;
+    --white: #ffffff;
   }
 }
