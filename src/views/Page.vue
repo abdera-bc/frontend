@@ -1,7 +1,7 @@
 <template>
   <div v-if="page" class="page base-grid">
     <div class="page__image full">
-      <img v-if="page.image" :src="page.image">
+      <img v-if="page.image" width="1280" height="768" :src="page.image" :alt="'Abdera ' + page.wp_title">
     </div>
     <div class="page__title content">
       <div v-if="page.subtitle" class="page__title__subline frame-br">

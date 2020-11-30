@@ -44,6 +44,7 @@ export default {
       min-height: 500px;
       max-height: 600px;
       object-fit: cover;
+      object-position: 20% 50%;
       vertical-align: middle;
     }
   }
@@ -61,8 +62,7 @@ export default {
 
   &__title {
     @include breakpoint('medium') {
-      position: absolute;
-      transform: translate(-100px, -80px);
+      transform: translateX(-100px);
     }
   }
 

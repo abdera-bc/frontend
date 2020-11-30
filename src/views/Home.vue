@@ -43,7 +43,7 @@
     <Overview show="3" />
 
     <div class="home__wrapper base-grid">
-      <Blackboard :entries="page.blackboard" />
+      <Blackboard v-if="page.blackboard" :entries="page.blackboard" />
 
       <div class="home__socialmedia content">
         <SocialLink type="facebook" dark />
@@ -201,6 +201,10 @@ export default {
       flex-direction: row;
       justify-content: space-around;
       padding: var(--containerSpacingHeight) var(--contentSpacingWidth) ;
+
+      @include breakpoint('medium') {
+        justify-content: space-between;
+      }
     }
 
     &__help {
@@ -218,12 +222,11 @@ export default {
 
         img {
           position: relative;
-          object-fit: cover;
           height: 100%;
           width: 100%;
+          object-fit: cover;
+          object-position: 90% 50%;
           vertical-align: middle;
-          left: 80%;
-          transform: translateX(-80%);
           z-index: -1;
 
           @include breakpoint('medium') {

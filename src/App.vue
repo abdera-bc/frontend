@@ -9,7 +9,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/vermietung">&rarr; Vermietung</router-link>
+            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
           </li>
         </ul>
       </Navigation>
@@ -27,7 +27,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/vermietung">&rarr; Vermietung</router-link>
+            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
           </li>
         </ul>
       </Footer>
@@ -44,7 +44,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/vermietung">&rarr; Vermietung</router-link>
+            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
           </li>
         </ul>
       </Navigation>
@@ -62,7 +62,7 @@
         </ul>
         <ul>
           <li>
-            <router-link to="/vermietung">&rarr; Vermietung</router-link>
+            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
           </li>
         </ul>
       </Footer>

@@ -83,6 +83,7 @@ export default {
   &--left {
     grid-column-start: 2;
     grid-column-end: 3;
+    pointer-events: none;
     z-index: 1;
   }
   

@@ -20,13 +20,13 @@ const routes = [
     component: Programm
   },
   {
-    path: '/ueber',
-    name: 'Über',
+    path: '/abbe',
+    name: 'Das Abdera',
     component: Page
   },
   {
-    path: '/information',
-    name: 'Infos',
+    path: '/besuch',
+    name: 'Der Besuch',
     component: Page
   },
   {
@@ -44,6 +44,10 @@ const routes = [
   },
   {
     path: '/mitgliederliste',
+    component: Page
+  },
+  {
+    path: '/geschichte',
     component: Page
   },
   {
