@@ -3,9 +3,14 @@ h1 {
   margin: 0;
 }
 
-h2 {
+h2, h3, h4 {
   @include font(subline);
   text-decoration: underline;
+
+  strong {
+    @include font(subline);
+    text-transform: underline;
+  }
 }
 
 p {
