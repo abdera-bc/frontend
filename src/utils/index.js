@@ -1,3 +1,4 @@
+import 'whatwg-fetch'
 import { get as loget } from 'lodash';
 import jsCookie from 'js-cookie';
 import config from '../config/index';
@@ -37,7 +38,7 @@ const utils = {
     let parameter = (pages || fields || filter) ? '?' + pages + fields + filter : '';
     const query = config.API_LOCATION + api + endpoint + parameter;
 
-    const response = await fetch(query);
+    const response = await window.fetch(query);
 
     if (response.status == 200) {
       if (endpoint === 'events') {

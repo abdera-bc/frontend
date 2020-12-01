@@ -5,7 +5,7 @@
         <div class="navigation__main__logo--wrapper">
           <router-link to="/">
             <div class="navigation__main__logo">
-              <img src="@/assets/images/abdera-logo.svg" alt="Kulturhalle Abdera Biberach – Logo">
+              <img width="300" height="24" src="@/assets/symbols/abdera-logo.svg" alt="Kulturhalle Abdera Biberach – Logo">
             </div>
           </router-link>
         </div>
@@ -85,8 +85,6 @@ export default {
   .navigation__main__logo {
     position: relative;
     height: 100%;
-    top: 50%;
-    transform: translateY(-50%);
     padding: 13px 0;
 
     img {
@@ -108,6 +106,7 @@ export default {
     height: 100%;
     width: $mainMenuHeight;
     text-align: center;
+    vertical-align: middle;
     cursor: pointer;
     
     &::after {
@@ -115,8 +114,8 @@ export default {
       background: url('../../assets/symbols/hamburger.svg') center 2px no-repeat;
       display: block;
       align-self: center;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
     }
   }
 
@@ -126,8 +125,8 @@ export default {
       background: url('../../assets/symbols/close.svg') center 2px no-repeat;
       display: block;
       align-self: center;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
     }
   }
 

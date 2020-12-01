@@ -75,7 +75,8 @@ export default {
   }
 
   &__wrapper {
-    padding: var(--paddingSmall)
+    padding: var(--paddingSmall);
+    margin: 0 auto;
   }
 
   &__button-container {

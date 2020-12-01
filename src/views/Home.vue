@@ -2,7 +2,8 @@
   <div v-if="page" class="home">
     <div class="home__wrapper base-grid">
       <div class="home__image full">
-        <img width="1280" height="768" :src="page.image" alt="Willkommen im Abdera">
+        <img v-if="page.image" width="1280" height="768" :src="page.image" alt="Willkommen im Abdera">
+        <img v-else width="1280" height="768" src="@/assets/images/abdera-start.jpg" alt="Willkommen im Abdera">
       </div>
 
       <div class="home__title full base-grid">
@@ -26,7 +27,7 @@
           <Tag 
             class="home__description__link" 
             content="Mehr über uns" 
-            url="/ueber" 
+            url="/abbe" 
             dark
           />
         </div>
