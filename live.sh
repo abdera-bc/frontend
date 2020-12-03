@@ -19,5 +19,3 @@ git commit -m "Release latest changes"
 git push -f git@github.com:abdera-bc/frontend master:live
 
 cd -
-
-npm run deploy:stage

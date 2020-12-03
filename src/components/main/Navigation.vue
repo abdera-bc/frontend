@@ -89,7 +89,7 @@ export default {
 
     img {
       height: 100%;
-      width: 100%;
+      width: auto;
       object-fit: contain;
       object-position: 0 0;
       vertical-align: middle;
