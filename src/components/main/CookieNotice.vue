@@ -1,7 +1,9 @@
 <template>
   <div v-if="cookieSet" class="cookie-notice base-grid" :class="{'cookie-notice__dark' : dark}">
     <div class="cookie-notice__wrapper content">
-      <p>Wir nutzen Cookies um zu erfahren, wie viele Leute unsere Website besuchen und was sie am Interessantesten finden. <strong>Ist es ok für dich, dass wir hierfür Cookies setzen?</strong></p>
+      <p>Wir nutzen Cookies und Google Analytics um zu erfahren, wie viele Leute unsere Website besuchen und welche Inhalte sie am Interessantesten finden. Weitere Informationen hierzu findest du in unserer <a href="/datenschutz">Datenschutzerklärung</a>. 
+      <br><br><strong>Ist es ok für dich, dass wir aus diesem Grund Cookies setzen?</strong>
+      </p>
       <div class="cookie-notice__button-container">
         <Tag
           @click.native="cookieAccepted()"
@@ -60,11 +62,12 @@ export default {
 
 <style lang="scss">
 .cookie-notice {
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: 100%;
   height: auto;
   background-color: var(--black);
+  border-top: 2px solid var(--white);
 
   * {
     color: var(--white);
@@ -72,6 +75,10 @@ export default {
 
   p {
     margin-bottom: var(--paddingSmall);
+  }
+
+  a {
+    text-decoration: underline;
   }
 
   &__wrapper {
