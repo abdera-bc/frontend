@@ -2,7 +2,7 @@
 <template>
   <div class="important full base-grid">
     <div class="important__image full">
-      <img width="1280" height="600" :src="image" alt="Background Image">
+      <img width="1280" height="600" :src="image" alt="Background Image" loading="lazy">
     </div>
     <div class="important__wrapper content medium-right">
       <div class="important__title">

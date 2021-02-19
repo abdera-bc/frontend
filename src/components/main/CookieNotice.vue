@@ -10,7 +10,9 @@
           content="Yeah … Cookies!"
           icon="&check;"
           dark />
-        <span class="cookie-notice__denial transition" @click="cookieDenied()">Nein, ich mag keine Cookies</span>
+        <span class="cookie-notice__denial transition" @click="cookieDenied()">
+          Nein, ich mag keine Cookies
+        </span>
       </div>
     </div>
   </div>

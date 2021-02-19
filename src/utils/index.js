@@ -1,10 +1,9 @@
 import 'whatwg-fetch'
-import { get as loget } from 'lodash';
+import loget from 'lodash/get';
 import jsCookie from 'js-cookie';
 import config from '../config/index';
 import router from '../router';
 import store from '../store';
-
 
 var monthChange = null;
 
@@ -134,7 +133,7 @@ const utils = {
       Jun: 'Jun',
       Jul: 'Jul',
       Aug: 'Aug',
-      Sept: 'Sept',
+      Sep: 'Sept',
       Oct: 'Okt',
       Nov: 'Nov',
       Dec: 'Dez',
@@ -157,6 +156,7 @@ function date(string) {
   let dateString = new Date(y, m -1, d) + '';
 
   let [full, weekday, month, day, year] = dateString.match(/(.{3})\s(.{3})\s(\d{2})\s(\d{4})/);
+
 
   if (monthChange != null) {
     const res = monthChange != month ? true : false;

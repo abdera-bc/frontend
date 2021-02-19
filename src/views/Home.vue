@@ -55,7 +55,7 @@
     <div class="home__wrapper base-grid">
       <div class="home__help full base-grid">
         <div class="home__help__image full">
-          <img width="1280" height="768" src="../assets/images/abdera-helfen.jpg" alt="Helfen im Abdera">
+          <img width="1280" height="768" src="../assets/images/abdera-helfen.jpg" alt="Helfen im Abdera" loading="lazy">
         </div>
         <div class="home__help__wrapper content medium-right">
           <div class="home__help__title">
