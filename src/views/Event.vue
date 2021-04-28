@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="event__image full">
-        <img v-if="event.image" :src="event.image">
+        <img v-if="event.image" :src="event.image" :alt="event.title">
       </div>
       <EventInfo :event="event" />
       <div class="event__content content">

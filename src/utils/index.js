@@ -56,7 +56,7 @@ const utils = {
         return { 
           id: event.id || '',
           title: loget(event, 'title.rendered'), 
-          content: loget(event, 'content.rendered'),
+          content: changeContent(loget(event, 'content.rendered')),
           types: event.cats ? event.cats.map((cat) => [cat.name, cat.slug, cat.cat_ID]) : '',
           tags: event.custom_tags ? event.custom_tags.map((tag) => tag.name) : '',
           date: date(loget(event, 'acf.event_date')),
@@ -145,6 +145,10 @@ const utils = {
   getCookie: (name) => {
     return jsCookie.get(name);
   }
+}
+
+function changeContent(payload) {
+  return payload.replace(/https:\/\/www.youtube.com\/embed/g, 'https://www.youtube-nocookie.com/embed');
 }
 
 function date(string) {
