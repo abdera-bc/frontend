@@ -11,11 +11,20 @@
           <div class="footer__contact">
             <p class="text--caption footer__contact__item">
               <strong> © {{ currentYear }} Lilienthal e.V.<br />
-              Kulturhalle Abdera <br /></strong>
-              Breslaustraße 13 <br />
-              88400 Biberach/Riß <br /><br />
+              Kulturhalle Abdera</strong><br />
+              <a 
+                class="footer__container__link" 
+                href="https://goo.gl/maps/AqhEVUu3ajY8928n6" 
+                target="_blank">
+                Breslaustraße 13 <br />
+                88400 Biberach/Riß
+              </a><br /><br />
               +49 (0) 7351 / 16 93 54 <br />
-              <a class="footer__container__mail" href="mailto:info@abdera-bc.de">info@abdera-bc.de</a>
+              <a 
+                class="footer__container__mail" 
+                href="mailto:info@abdera-bc.de">
+                info@abdera-bc.de
+              </a>
             </p>
             <div class="footer__legal footer__contact__item">
               <Tag content="Impressum" :url="this.config.BASE_URL + 'impressum'" dark />
