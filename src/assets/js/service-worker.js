@@ -20,6 +20,9 @@ self.addEventListener('activate', function () {
 });
 
 self.addEventListener('fetch', function(event) {
+  if (!(event.request.url.indexOf('http') === 0)) {
+    return false;
+  }
   event.respondWith(
     caches.open('abdera-dynamic').then(function(cache) {
       return fetch(event.request)
