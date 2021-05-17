@@ -125,16 +125,16 @@ export default {
   }
 
   &__content {
-    padding-bottom: 20px;
+    margin-bottom: -2px;
     border-top: 2px solid var(--black);
-    border-bottom: 2px solid var(--black);
     
     .rendered-content {
       margin-top: -2px;
     }
 
     &__tags {
-      padding: var(--containerSpacingHeight) var(--contentSpacingWidth) calc(var(--containerSpacingHeight) - 20px) var(--contentSpacingWidth);
+      margin-top: var(--containerSpacingHeight);
+      padding: 0 var(--contentSpacingWidth) calc(var(--containerSpacingHeight) - 20px) var(--contentSpacingWidth);
     }
   }
 

@@ -58,6 +58,7 @@ export default {
 <style lang="scss">
 .quicklook {
   padding: var(--containerSpacingHeight) var(--textSpacingWidth);
+  border-top: 2px solid var(--black);
   border-bottom: 2px solid var(--black);
 
   &__title {
