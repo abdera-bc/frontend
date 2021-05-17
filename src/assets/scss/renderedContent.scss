@@ -57,6 +57,7 @@ strong {
       content: '';
       position: absolute;
       width: 100vw;
+      max-width: var(--contentMaxWidth);
       height: 100%;
       left: calc(var(--outerArea) * -1);
       transform: translateY(calc(var(--containerSpacingHeight) * -1));
@@ -106,6 +107,7 @@ strong {
       content: '';
       position: absolute;
       width: 100vw;
+      max-width: var(--contentMaxWidth);
       height: 100%;
       left: calc(var(--outerArea) * -1);
       transform: translateY(calc(var(--containerSpacingHeight) * -1));
@@ -224,6 +226,7 @@ strong {
       content: '';
       position: absolute;
       width: 100vw;
+      max-width: var(--contentMaxWidth);
       height: 100%;
       left: calc(var(--outerArea) * -1);
       transform: translateY(calc(var(--containerSpacingHeight) * -1));
