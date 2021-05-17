@@ -153,7 +153,6 @@ export default {
   max-width: 1280px;
   margin: 0 auto;
   min-height: calc(100vh - 50px);
-  overflow: hidden;
   box-shadow: 0 5px 100px 0px #f3f3f3;
   background-color: var(--white);
   z-index: -1;

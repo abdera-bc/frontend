@@ -241,7 +241,6 @@ export default {
       background-color: var(--black);
       height: 30px;
       transform-origin: top;
-      overflow: hidden;
       cursor: pointer;
     }
 

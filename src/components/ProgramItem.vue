@@ -79,19 +79,18 @@ export default {
 .program__item {
   position: relative;
   padding-top: 40px;
+  z-index: 0;
 
   &--left {
     grid-column-start: 2;
     grid-column-end: 3;
     pointer-events: none;
-    z-index: 1;
   }
   
   &--right {
     grid-column-start: 3;
     grid-column-end: 6;
     pointer-events: none;
-    z-index: 1;
 
     @include breakpoint('medium') {
       display: flex;
