@@ -1,5 +1,8 @@
 set -e
 
+read -p "Enter release commit: " release_commit
+: "${release_commit:="Release latest changes"}"
+
 # build
 npm run build
 
@@ -15,7 +18,7 @@ cd dist
 
 git init
 git add -A
-git commit -m "Release latest changes"
+git commit -m "${release_commit}"
 git push -f git@github.com:abdera-bc/frontend master:live
 
 cd -
