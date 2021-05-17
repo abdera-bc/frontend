@@ -69,7 +69,7 @@ export default {
 
     &__left {
       grid-column-start: 2;
-      grid-column-end: 4;
+      grid-column-end: 6;
       padding-bottom: 20px;
     }
 
