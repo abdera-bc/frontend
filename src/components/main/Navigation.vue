@@ -26,9 +26,11 @@
       </div>
     </div>
     <transition name="toggleMenuBackButton">
-      <div v-if="this.$route.path.includes('/event/')" class="navigation__optional--grid base-grid">
-        <div v-on:click="goBack()" class="navigation__optional content">
-          &larr; Übersicht
+      <div v-if="this.$route.path.includes('/event/')" class="navigation__optional__container">
+        <div class="navigation__optional--grid base-grid">
+          <div v-on:click="goBack()" class="navigation__optional content large-full">
+            &larr; Übersicht
+          </div>
         </div>
       </div>
     </transition>
@@ -224,16 +226,29 @@ export default {
     }
   }
 
-  &__optional--grid {
+  &__optional {
     @include font(subline);
     text-transform: none;
-    background-color: var(--black);
     color: var(--white);
-    height: 30px;
     line-height: 30px;
-    transform-origin: top;
-    overflow: hidden;
-    cursor: pointer;
+    padding-top: 1px;
+
+    @include breakpoint('large') {
+      padding-left: 15px;
+    }
+
+    &__container {
+      background-color: var(--black);
+      height: 30px;
+      transform-origin: top;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    &--grid {
+      margin: 0 auto;
+      max-width: 1280px;
+    }
   }
 
   &--dark {
