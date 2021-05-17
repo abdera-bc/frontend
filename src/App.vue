@@ -1,74 +1,37 @@
 <template>
   <div id="app" :class="{'app__dark' : isDark}">
-    <template v-if="isDark">
-      <Navigation dark>
-        <ul>
-          <li v-for="route in routes" :key="route.path">
-            <router-link :to="route.path">{{ route.name }}</router-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
-          </li>
-        </ul>
-      </Navigation>
+    <Navigation :dark="isDark">
+      <ul>
+        <li v-for="route in routes" :key="route.path">
+          <router-link :to="route.path">{{ route.name }}</router-link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
+        </li>
+      </ul>
+    </Navigation>
 
-      <main class="main__dark">
-        <Loader v-show="isLoading()" />
-        <router-view v-show="!isLoading()" />
-      </main>
+    <main :class="{'main__dark' : isDark}">
+      <Loader v-show="isLoading()" />
+      <router-view v-show="!isLoading()" />
+    </main>
 
-      <Footer v-show="!isLoading()">
-        <ul>
-          <li v-for="route in routes" :key="route.path">
-            <router-link :to="route.path">{{ route.name }}</router-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
-          </li>
-        </ul>
-      </Footer>
+    <Footer v-show="!isLoading()">
+      <ul>
+        <li v-for="route in routes" :key="route.path">
+          <router-link :to="route.path">{{ route.name }}</router-link>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
+        </li>
+      </ul>
+    </Footer>
 
-      <CookieNotice />
-    </template>
-
-    <template v-else>
-      <Navigation>
-        <ul>
-          <li v-for="route in routes" :key="route.path">
-            <router-link :to="route.path">{{ route.name }}</router-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
-          </li>
-        </ul>
-      </Navigation>
-
-      <main>
-        <Loader v-show="isLoading()" />
-        <router-view v-show="!isLoading()" />
-      </main>
-
-      <Footer v-show="!isLoading()">
-        <ul>
-          <li v-for="route in routes" :key="route.path">
-            <router-link :to="route.path">{{ route.name }}</router-link>
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <router-link to="/vermietung">&rarr; Booking & Mieten</router-link>
-          </li>
-        </ul>
-      </Footer>
-
-      <CookieNotice />
-    </template>
+    <CookieNotice />
   </div>
 </template>
 

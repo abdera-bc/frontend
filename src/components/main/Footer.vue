@@ -15,7 +15,8 @@
               <a 
                 class="footer__container__link" 
                 href="https://goo.gl/maps/AqhEVUu3ajY8928n6" 
-                target="_blank">
+                target="_blank"
+                rel="noreferrer">
                 Breslaustraße 13 <br />
                 88400 Biberach/Riß
               </a><br /><br />
