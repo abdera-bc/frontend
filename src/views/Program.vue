@@ -1,8 +1,26 @@
 <template>
   <div class="program">
-      <template v-for="event in events">
-        <ProgramItemSeparator class="lazy-program" :key="event.id + '-' + event.date.month" v-if="event.date.change" :month="event.date.month" :year="event.date.year" />
-        <ProgramItem class="lazy-program" :key="event.id" :event="event" />
+      <template v-for="month in events">
+        <template v-if="month.date.change">
+          <div class="event__month" :key="month.id">
+            <ProgramItemSeparator 
+              class="lazy-program"
+              :key="month.id + '-' + month.date.month"
+              v-if="month.date.change"
+              :month="month.date.month"
+              :year="month.date.year"
+            />
+
+            <template v-for="event in events">
+              <ProgramItem 
+                v-if="(event.date.month === month.date.month) && (event.date.year === month.date.year)" 
+                class="lazy-program" 
+                :key="event.id" 
+                :event="event" 
+              />
+            </template>
+          </div>
+        </template>
       </template>
     <div 
       v-if="this.$store.state.content && this.$store.state.events.count < this.$store.state.events.total" 
