@@ -53,6 +53,8 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    line-height: 2em;
 
     > span:not(:last-child), > div {
       &:after {
