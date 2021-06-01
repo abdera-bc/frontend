@@ -102,6 +102,7 @@ const utils = {
           title: loget(data, 'acf.home_important.home_important_title'),
           content: loget(data, 'acf.home_important.home_important_content'),
           image: loget(data, 'acf.home_important.home_important_image'),
+          link: loget(data, 'acf.home_important.home_important_link')
         },
         content: loget(data, 'content.rendered')
       }

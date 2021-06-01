@@ -154,6 +154,7 @@ export default {
   &__tags {
     display: inline-block;
     min-width: 130px;
+    z-index: 1;
 
     @include breakpoint('medium') {
       display: flex;

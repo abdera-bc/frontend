@@ -20,6 +20,10 @@ const routes = [
     component: Programm
   },
   {
+    path: '/event/:id',
+    component: Event
+  },
+  {
     path: '/abbe',
     name: 'Das Abdera',
     component: Page
@@ -35,31 +39,12 @@ const routes = [
     component: Page
   },
   {
-    path: '/vermietung',
+    path: '/:slug',
     component: Page
-  },
-  {
-    path: '/datenschutz',
-    component: Page
-  },
-  {
-    path: '/mitgliederliste',
-    component: Page
-  },
-  {
-    path: '/geschichte',
-    component: Page
-  },
-  {
-    path: '/impressum',
-    component: Page
-  },
-  {
-    path: '/event/:id',
-    component: Event
   },
   {
     path: '/404', 
+    name: '404',
     component: NotFound
   },
   {

@@ -29,19 +29,24 @@ export default {
     }
   },
   methods: {
-    getContent: function (slug) {
+    getContent: function () {
       this.$store.commit('isLoading', true);
+
+      const slug = this.$route.path.substr(this.$route.path.lastIndexOf('/') + 1);
+      
       utils.get.content('pages?slug=' + slug)
-        .then(res => this.page = utils.map.page(res[0]))
+        .then(res => res
+            ? this.page = utils.map.page(res[0])
+            : this.$router.push({ name: '404' }))
         .then(this.$store.commit('isLoading', false))
-    }
+    },
   },
   mounted: function () {
-    this.getContent(this.$route.path.substr(this.$route.path.lastIndexOf('/') + 1));
+    this.getContent();
   },
   watch: {
     $route() {
-      this.getContent(this.$route.path.substr(this.$route.path.lastIndexOf('/') + 1));
+      this.getContent();
     }
   }
 }

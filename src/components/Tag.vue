@@ -59,6 +59,7 @@ export default {
 
     &--light {
       border: 1px solid var(--white);
+      background-color: transparent;
     }
   }
 </style>

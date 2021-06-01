@@ -2,9 +2,11 @@
   <div id="app" :class="{'app__dark' : isDark}">
     <Navigation :dark="isDark">
       <ul>
-        <li v-for="route in routes" :key="route.path">
-          <router-link :to="route.path">{{ route.name }}</router-link>
-        </li>
+        <template v-for="route in routes">
+          <li v-if="!excludeRoutes(route.name)" :key="route.path">
+            <router-link :to="route.path">{{ route.name }}</router-link>
+          </li>
+        </template>
       </ul>
       <ul>
         <li>
@@ -20,9 +22,11 @@
 
     <Footer v-show="!isLoading()">
       <ul>
-        <li v-for="route in routes" :key="route.path">
-          <router-link :to="route.path">{{ route.name }}</router-link>
-        </li>
+        <template v-for="route in routes">
+          <li v-if="!excludeRoutes(route.name)" :key="route.path">
+            <router-link :to="route.path">{{ route.name }}</router-link>
+          </li>
+        </template>
       </ul>
       <ul>
         <li>
@@ -61,12 +65,19 @@ export default {
     isLoading: function () {
       return this.$store.state.loading;
     },
-    tracking() {
+    tracking () {
       this.cookie = utils.cookie.get('cookie-acceptance');
 
       if (this.cookie === '1') {
         this.$ga.page(this.$route.path);
       }
+    },
+    excludeRoutes: function (route) {
+      const excludedRoutes = [
+        '404'
+      ]
+
+      return excludedRoutes.includes(route);
     }
   },
   created() {

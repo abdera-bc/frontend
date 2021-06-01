@@ -35,9 +35,7 @@
 
       <Important 
         v-if="page.important.exists" 
-        :title="page.important.title"
-        :content="page.important.content"
-        :image="page.important.image"
+        :content="page.important"
       />
     </div>
       
