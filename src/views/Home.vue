@@ -126,15 +126,23 @@ export default {
   .home {
     &__image {
       min-height: 50px;
-      height: calc(100vh - 200px);
+      height: calc(100vh - #{$mainMenuHeight});
       width: auto;
       z-index: 1;
 
+      @include breakpoint('medium') {
+          height: calc(100vh - 200px);
+        }
+
       img {
-        height: calc(100vh - 200px);
+        height: calc(100vh - #{$mainMenuHeight});
         width: 100%;
         object-fit: cover;
         background-color: var(--black);
+
+        @include breakpoint('medium') {
+          height: calc(100vh - 200px);
+        }
       }
     }
 
