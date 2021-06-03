@@ -2,23 +2,23 @@
   <div v-if="page" class="home">
     <div class="home__wrapper base-grid">
       <div class="home__image full">
+        <div class="home__title full base-grid">
+          <div class="home__title__wrapper content">
+            <h2
+              v-if="page.subtitle"
+              class="home__title__subtitle text--headline frame-bl" 
+              v-html="page.subtitle">
+            </h2>
+            <h1
+              v-if="page.title"
+              class="text--headline frame-br"
+              v-html="page.title">
+            </h1>
+          </div>
+        </div>
+
         <img v-if="page.image" width="1280" height="768" :src="page.image" alt="Willkommen im Abdera" loading="lazy">
         <img v-else width="1280" height="768" src="@/assets/images/abdera-start.jpg" alt="Willkommen im Abdera" loading="lazy">
-      </div>
-
-      <div class="home__title full base-grid">
-        <div class="home__title__wrapper content">
-          <h2
-            v-if="page.subtitle"
-            class="home__title__subtitle text--headline frame-bl" 
-            v-html="page.subtitle">
-          </h2>
-          <h1
-            v-if="page.title"
-            class="text--headline frame-br"
-            v-html="page.title">
-          </h1>
-        </div>
       </div>
 
       <div class="home__description full base-grid">
@@ -128,7 +128,7 @@ export default {
       min-height: 50px;
       height: calc(100vh - 200px);
       width: auto;
-      z-index: -1;
+      z-index: 2;
 
       img {
         height: calc(100vh - 200px);
@@ -139,9 +139,14 @@ export default {
     }
 
     &__title {
-      position: relative;
-      background-color: var(--black);
+      position: sticky;
+      top: 250px;
+      height: 0;
 
+      @include breakpoint('medium') {
+        top: 350px;
+      }
+      
       &__wrapper {
         transform: translateY(-50%);
 
@@ -182,7 +187,9 @@ export default {
     }
 
     &__description {
+      position: relative;
       background-color: var(--black);
+      padding-top: calc(var(--containerSpacingHeight) * .5);
       padding-bottom: var(--containerSpacingHeight);
 
       .rendered-content {
