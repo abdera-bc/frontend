@@ -42,14 +42,15 @@
             </span>
           </div>
       </div>
+      <div class="program__item__tags--container">
+        <div v-if="event.tags" class="program__item__tags">
+          <Tag v-for="tag in event.tags" :key="tag" :content="tag" />
+        </div>
 
-      <div v-if="event.tags" class="program__item__tags">
-        <Tag v-for="tag in event.tags" :key="tag" :content="tag" />
-      </div>
-
-      <div class="program__item__tags">
-        <Tag v-if="event.quick.includes('vvk_address')" content="VVK" :url="event.tickets" />
-        <Tag v-if="event.quick.includes('partypass')" content="Partypass" url="https://www.partypass.de/" />
+        <div class="program__item__tags">
+          <Tag v-if="event.quick.includes('vvk_address')" content="VVK" :url="event.tickets" />
+          <Tag v-if="event.quick.includes('partypass')" content="Partypass" url="https://www.partypass.de/" />
+        </div>
       </div>
     </div>
 
@@ -155,6 +156,17 @@ export default {
     display: inline-block;
     min-width: 130px;
     z-index: 1;
+    
+    &--container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      flex-shrink: 0;
+
+      @include breakpoint('small') {
+        flex-direction: row;
+      }
+    }
 
     @include breakpoint('medium') {
       display: flex;
