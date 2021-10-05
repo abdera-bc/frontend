@@ -23,7 +23,7 @@
         </template>
       </template>
     <div 
-      v-if="this.$store.state.content && this.$store.state.events.count < this.$store.state.events.total" 
+      v-if="events && (eventsCount < eventsTotal)" 
       class="program__container lazy-program base-grid"
     >
       <div class="program__container__right">
@@ -39,6 +39,7 @@
 
 <script>
 import utils from '../utils'
+import { mapState } from 'vuex'
 import ProgramItem from '@/components/ProgramItem'
 import ProgramItemSeparator from '@/components/ProgramItemSeparator'
 import Tag from '@/components/Tag'
@@ -50,11 +51,11 @@ export default {
     ProgramItemSeparator,
     Tag
   },
-  computed: {
-    events: function () {
-      return this.$store.state.events.content;
-    }
-  },
+  computed: mapState({
+    events: state => state.events.content,
+    eventsCount: state => state.events.count,
+    eventsTotal: state => state.events.total
+  }),
   methods: {
     fetchEvents: async function () {
       await utils.get.content(
