@@ -5,8 +5,6 @@ import config from '../config/index';
 import router from '../router';
 import store from '../store';
 
-var monthChange = null;
-
 const utils = {
   getContent: async (endpoint, params={}) => {
     // Parameter
@@ -50,16 +48,16 @@ const utils = {
       }
     }
   },
-  eventMapper: (data) => {
+  eventMapper: (data, isPage) => {
     if (data) {
-      return data.map(event => {
+      return data.map((event) => {
         return { 
           id: event.id || '',
           title: loget(event, 'title.rendered'), 
           content: changeContent(loget(event, 'content.rendered')),
           types: event.cats ? event.cats.map((cat) => [cat.name, cat.slug, cat.cat_ID]) : '',
           tags: event.custom_tags ? event.custom_tags.map((tag) => tag.name) : '',
-          date: date(loget(event, 'acf.event_date')),
+          date: date(loget(event, 'acf.event_date'), isPage),
           entry: loget(event, 'acf.event_entry'),
           start: loget(event, 'acf.event_start'),
           end: loget(event, 'acf.event_end'),
@@ -154,7 +152,9 @@ function changeContent(payload) {
   return payload.replace(/https:\/\/www.youtube.com\/embed/g, 'https://www.youtube-nocookie.com/embed');
 }
 
-function date(string) {
+var monthChange = null;
+
+function date(string, isPage) {
   let change;
   let y = string.substring(0,4);
   let m = string.substring(4,6);
@@ -164,7 +164,6 @@ function date(string) {
 
   let [full, weekday, month, day, year] = dateString.match(/(.{3})\s(.{3})\s(\d{2})\s(\d{4})/);
 
-
   if (monthChange != null) {
     const res = monthChange != month ? true : false;
     monthChange = month;
@@ -172,6 +171,10 @@ function date(string) {
   } else {
     monthChange = month;
     change = true;
+  }
+
+  if (isPage) { 
+    monthChange = null;
   }
 
   return {
@@ -192,6 +195,7 @@ export default {
   },
   map: {
     events: utils.eventMapper,
+    event: utils.singleEventMapper,
     page: utils.pageMapper,
     home: utils.homeMapper
   },
