@@ -23,10 +23,10 @@
       </p>
       <p>
         <span v-if="event.vvk">
-          <strong>Preis Vorverkauf</strong> <span>€ {{event.vvk}}</span>
+          <strong>Preis Vorverkauf</strong> <span>€{{event.vvk}}{{ event.vvkDisc ? `/€${event.vvkDisc}` : '' }}</span>
         </span><br />
         <span v-if="event.ak">
-          <strong>Preis Abendkasse</strong> <span>€ {{event.ak}}</span>
+          <strong>Preis Abendkasse</strong> <span>€{{event.ak}}{{ event.akDisc ? `/€${event.akDisc}` : '' }}</span>
         </span><br />
       </p>
       <template v-if="event.quick && event.tickets">
@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss">
 .quicklook {
-  padding: var(--containerSpacingHeight) var(--textSpacingWidth);
+  padding: var(--containerSpacingHeight) var(--contentSpacingWidth);
   border-top: 2px solid var(--black);
   border-bottom: 2px solid var(--black);
 

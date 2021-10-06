@@ -61,12 +61,12 @@
           </div>
           <div class="home__help__content">
             <p class="frame-bl">
-              <strong>... werde Helfer!</strong><br />
+              <strong>... werde Helfer:in!</strong><br />
               Wir suchen immer fleißige Freiwillige, die mit uns den Laden schmeißen!<br />
                 <span class="home__help__button">
                   <Tag 
                       class="home__help__link" 
-                      content="Helfer werden" 
+                      content="Helfer:in werden" 
                       url="/mitmachen" 
                     />
                 </span>

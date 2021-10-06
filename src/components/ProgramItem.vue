@@ -34,11 +34,11 @@
             </span>
 
             <span v-else-if="event.ak && event.vvk">
-              AK €{{ event.ak }} • VVK €{{ event.vvk }}
+              AK €{{ event.ak }}{{ event.akDisc ? `/€${event.akDisc}` : '' }} • VVK €{{ event.vvk }}{{ event.vvkDisc ? `/€${event.vvkDisc}` : '' }}
             </span>
 
             <span v-else>
-              €{{ event.ak }}
+              €{{ event.ak }}{{ event.akDisc ? `/€${event.akDisc}` : '' }}
             </span>
           </div>
       </div>
