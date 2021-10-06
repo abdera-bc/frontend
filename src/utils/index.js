@@ -70,7 +70,9 @@ const utils = {
           website: loget(event, 'acf.event_common_information.event_website'),
           image: loget(event, 'acf.event_common_information.event_image'),
           vvk: loget(event, 'acf.event_sale_information.event_pre_sale'),
+          vvkDisc: loget(event, 'acf.event_sale_information.event_pre_sale_disc'),
           ak: loget(event, 'acf.event_sale_information.event_box_office'),
+          akDisc: loget(event, 'acf.event_sale_information.event_box_office_disc'),
           tickets: loget(event, 'acf.event_sale_information.event_ticket_link'),
           quick: loget(event, 'acf.event_quick_information'),
         }
