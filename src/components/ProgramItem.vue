@@ -103,6 +103,8 @@ export default {
   &__type {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: -5px; // Neutralize spans top-margin
     
     > div:not(:last-child) {
       &:after {
@@ -111,7 +113,9 @@ export default {
     }
 
     span {
+      display: inline-block;
       text-decoration: underline;
+      margin-top: 5px;
     }
   }
 
