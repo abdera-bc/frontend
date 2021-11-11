@@ -9,7 +9,7 @@
         </div>
 
         <span v-if="event.entry">
-          Ab {{ event.entry }}
+          Einlass {{ event.entry }}
         </span>
 
         <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
