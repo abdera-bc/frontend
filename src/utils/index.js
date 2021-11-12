@@ -58,6 +58,7 @@ const utils = {
           types: event.cats ? event.cats.map((cat) => [cat.name, cat.slug, cat.cat_ID]) : '',
           tags: event.custom_tags ? event.custom_tags.map((tag) => tag.name) : '',
           date: date(loget(event, 'acf.event_date'), isPage),
+          date_raw: loget(event, 'acf.event_date'),
           entry: loget(event, 'acf.event_entry'),
           start: loget(event, 'acf.event_start'),
           end: loget(event, 'acf.event_end'),

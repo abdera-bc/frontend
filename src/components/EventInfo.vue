@@ -23,6 +23,20 @@
         <span v-else>
           €{{ event.ak }}{{ event.vvkDisc ? `/€${event.vvkDisc}` : '' }}
         </span>
+
+        <span>
+          {{ event.date_raw }}
+        </span>
+
+        <div title="Add to Calendar" class="addeventatc">
+            Add to Calendar
+            <span class="start">11/25/2021 09:00 AM</span>
+            <span class="end">11/25/2021 10:00 AM</span>
+            <span class="timezone">America/Los_Angeles</span>
+            <span class="title">Summary of the event</span>
+            <span class="description">Description of the event</span>
+            <span class="location">Location of the event</span>
+        </div>
       </div>
   </div>
 </template>
