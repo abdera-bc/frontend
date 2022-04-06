@@ -313,7 +313,8 @@ strong {
   }
 }
 
-// Style for dark layout
+// Style for dark layouts
+.blackboard .rendered-content,
 .main__dark .rendered-content {
   .custom-file-block .wp-block-file:before {
     filter: invert(100%);
@@ -322,5 +323,17 @@ strong {
   .custom-image-block {
     --black: #000000;
     --white: #ffffff;
+  }
+
+  ul, ol {
+    color: #ffffff;
+  }
+}
+
+.blackboard .rendered-content {
+  ul, ol {
+    margin: 0;
+    color: #ffffff;
+    border: none;
   }
 }
