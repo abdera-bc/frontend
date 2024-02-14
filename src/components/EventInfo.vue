@@ -8,11 +8,19 @@
           <span>{{ type[0] }}</span>
         </div>
 
-        <span v-if="event.entry">
+        <span v-if="event.entry_tba">
+          Einlass: TBA
+        </span>
+
+        <span v-else-if="event.entry">
           Einlass {{ event.entry }}
         </span>
 
-        <span v-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
+        <span v-if="event.price_tba">
+          Preis: TBA
+        </span>
+
+        <span v-else-if="event.ak === '0' && (event.vvk === '0' || !event.vvk)">
           Eintritt frei
         </span>
 

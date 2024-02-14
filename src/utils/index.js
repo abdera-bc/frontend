@@ -51,6 +51,7 @@ const utils = {
   eventMapper: (data, isPage) => {
     if (data) {
       return data.map((event) => {
+        console.log(event);
         return { 
           id: event.id || '',
           title: loget(event, 'title.rendered'), 
@@ -61,6 +62,8 @@ const utils = {
           entry: loget(event, 'acf.event_entry'),
           start: loget(event, 'acf.event_start'),
           end: loget(event, 'acf.event_end'),
+          entry_tba: loget(event, 'acf.event_entry_tba'),
+          price_tba: loget(event, 'acf.event_price_tba'),
           location: loget(event, 'acf.event_common_information.event_location'),
           organizer: loget(event, 'acf.event_common_information.event_organizer'),
           presenter: loget(event, 'acf.event_common_information.event_presenter'),

@@ -11,9 +11,13 @@
             {{ event.date.year }} 
             </span>
         </span><br />
-        <span v-if="event.entry">
+        <span v-if="event.entry_tba">
+          <strong>Einlass</strong> <span>TBA</span>
+        </span>
+        <span v-else-if="event.entry">
           <strong>Einlass</strong> <span>{{event.entry}}</span>
-        </span><br />
+        </span>
+        <br />
         <span v-if="event.start">
           <strong>Beginn</strong> <span>{{event.start}}</span>
         </span><br />
@@ -21,7 +25,12 @@
           <strong>Ende</strong> <span>{{event.end}}</span>
         </span><br />
       </p>
-      <p>
+      <p v-if="event.price_tba">
+        <span>
+          <strong>Preis</strong> <span>TBA</span>
+        </span><br />
+      </p>
+      <p v-else>
         <span v-if="event.vvk">
           <strong>Preis Vorverkauf</strong> <span>€{{event.vvk}}{{ event.vvkDisc ? `/€${event.vvkDisc}` : '' }}</span>
         </span><br />
