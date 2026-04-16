@@ -39,6 +39,11 @@ const routes = [
     component: Page
   },
   {
+    path: '/die-werkstatt',
+    name: 'Werkstatt',
+    component: Page
+  },
+  {
     path: '/:slug',
     component: Page
   },
